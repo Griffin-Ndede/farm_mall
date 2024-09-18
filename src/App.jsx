@@ -1,12 +1,11 @@
 import React from 'react'
+import Home from './components/Home'
 
 function App() {
 
   return (
     <>
-      <p className='font-poppins text-custom-orange'> 
-        This is going to be the main page for the farm mall application
-      </p>
+     <Home/>
     </>
   )
 }
