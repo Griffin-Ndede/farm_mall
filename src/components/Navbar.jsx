@@ -40,30 +40,30 @@ function Navbar() {
                 className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                 href="#"
               >
-                Blog
+                About
               </a>
-              <a
+              {/* <a
                 className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                 href="#"
               >
                 Portfolio
-              </a>
-              <a
+              </a> */}
+              {/* <a
                 className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                 href="#"
               >
                 About
-              </a>
+              </a> */}
               <a
                 className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                href="#"
+                href="calculator"
               >
-                Contact
+                Calculator
               </a>
               <div className="relative">
                 <button
                   onClick={() => setOpen(!open)}
-                  className="flex flex-row text-black bg-white items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-lg dark:bg-transparent dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  className="flex flex-row text-black bg-white items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-lg dark:focus:text-white dark:hover:text-white  dark:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                 >
                   <span>More</span>
                   <svg
@@ -102,11 +102,11 @@ function Navbar() {
                             </svg>
                           </div>
                           <div className="ml-3">
-                            <p className="font-semibold">Appearance</p>
-                            <p className="text-sm">Easy customization</p>
+                            <p className="font-semibold">Login</p>
+                            {/* <p className="text-sm">Easy customization</p> */}
                           </div>
                         </a>
-                        <a
+                        {/* <a
                           className="flex flex-row items-start rounded-lg bg-transparent p-2 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                           href="#"
                         >
@@ -127,7 +127,7 @@ function Navbar() {
                             <p className="font-semibold">Comments</p>
                             <p className="text-sm">Check your latest comments</p>
                           </div>
-                        </a>
+                        </a> */}
                         <a
                           className="flex flex-row items-start rounded-lg bg-transparent p-2 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                           href="#"
@@ -147,8 +147,8 @@ function Navbar() {
                             </svg>
                           </div>
                           <div className="ml-3">
-                            <p className="font-semibold">Analytics</p>
-                            <p className="text-sm">Take a look at your statistics</p>
+                            <p className="font-semibold">Signup</p>
+                            {/* <p className="text-sm">Take a look at your statistics</p> */}
                           </div>
                         </a>
                       </div>
