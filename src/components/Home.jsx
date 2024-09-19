@@ -1,5 +1,5 @@
 import React from "react";
-import { FaSitemap, FaDraftingCompass, FaNewspaper, FaFileAlt } from 'react-icons/fa';
+// import { FaSitemap, FaDraftingCompass, FaNewspaper, FaFileAlt } from 'react-icons/fa';
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -37,10 +37,10 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className="relative pt-16 bg-gray-500">
+      <section className="relative pt-16  h-screen">
         <div className="container mx-auto">
           <div className="flex flex-wrap items-center mx-auto">
-            <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-24">
+            <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto">
               <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-custom-orange">
                 <img
                   alt="farmer"
@@ -59,81 +59,36 @@ function Home() {
                       className="text-custom-orange fill-current"
                     />
                   </svg>
-                  <h4 className="text-xl font-bold text-white">
+                  <h4 className="text-xl font-bold text-custom-orange">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </h4>
-                  <p className="text-sm font-light mt-2 text-white">explicabo omnis consequuntur fugiat voluptas labore accusantium, totam, nemo, aperiam natus facere in saepe repellat laborum. Qui, ducimus possimus.
+                  <p className="text-sm font-light mt-2 ">explicabo omnis consequuntur fugiat voluptas labore accusantium, totam, nemo, aperiam natus facere in saepe repellat laborum. Qui, ducimus possimus.
                   </p>
                 </blockquote>
               </div>
             </div>
             <div className="w-full md:w-6/12 px-4">
-              <div className="flex flex-wrap">
-                <div className="w-full md:w-6/12 px-4">
-                  <div className="relative flex flex-col mt-4">
-                    <div className="px-4 py-5 flex-auto">
-                      <div
-                        className="text-black p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white"
-                      >
-                        <FaSitemap />
-                      </div>
-                      <h6 className="text-xl mb-1 font-semibold">Lorem ipsum dolor sit amet.</h6>
-                      <p className="mb-4 text-xs text-black">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                       Ipsa, fuga modi. Vero amet ut totam quis cupiditate nulla, provident facilis?
-                      </p>
-                    </div>
-                  </div>
-                  <div className="relative flex flex-col min-w-0">
-                    <div className="px-4 py-5 flex-auto">
-                      <div
-                        className="text-black p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white"
-                      >
-                        <FaDraftingCompass />
-                      </div>
-                      <h6 className="text-xl mb-1 font-semibold">Lorem ipsum dolor sit amet.</h6>
-                      <p className="mb-4 text-xs text-black">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Voluptate, eveniet assumenda soluta ipsum deleniti inventore ipsam eaque neque vero nam!
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full md:w-6/12 px-4">
-                  <div className="relative flex flex-col min-w-0 mt-4">
-                    <div className="px-4 py-5 flex-auto">
-                      <div
-                        className="text-black p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white"
-                      >
-                        <FaNewspaper />
-                      </div>
-                      <h6 className="text-xl mb-1 font-semibold">Lorem ipsum dolor sit amet.</h6>
-                      <p className="mb-4 text-xs text-black">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                        Officia modi molestias, eius ut consequuntur vel soluta! 
-                        Molestiae unde architecto libero commodi nesciunt impedit itaque, 
-                        saepe porro doloremque at. Perspiciatis, tempora.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="relative flex flex-col min-w-0">
-                    <div className="px-4 py-5 flex-auto">
-                      <div
-                        className="text-black p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white"
-                      >
-                        <FaFileAlt />
-                      </div>
-                      <h6 className="text-xl mb-1 font-semibold">Lorem ipsum dolor sit amet.</h6>
-                      <p className="mb-4 text-xs text-black">
-                          Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                          Numquam minima aperiam delectus, quis debitis quia eaque vero 
-                          voluptatibus amet, sint a expedita commodi laborum nam!
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg"> */}
+  <h1 className="text-4xl font-bold text-custom-orange mb-6 text-center">Calculator</h1>
+  
+  <div className="flex flex-col space-y-6">
+    <div>
+      <label 
+        htmlFor="plantingdate" 
+        className="block text-lg font-semibold text-gray-700 mb-2"
+      >
+        Planting Date
+      </label>
+      <input
+        type="date"
+        name="plantingdate"
+        id="plantingdate"
+        className="block w-full rounded-xl border-gray-300 py-2 px-4 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-base"
+      />
+    </div>
+  </div>
+</div>
+
           </div>
         </div>
         <Footer/>
