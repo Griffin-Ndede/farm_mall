@@ -1,13 +1,14 @@
 import React from "react";
 import { FaSitemap, FaDraftingCompass, FaNewspaper, FaFileAlt } from 'react-icons/fa';
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 function Home() {
   return (
     <>
       <Navbar/>
-      <section className="h-screen">
-        <div className="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24">
+      <section className="h-screen bg-gray-200">
+        <div className="container mx-auto flex flex-col md:flex-row items-center pt-24">
           <div className="flex flex-col w-full lg:w-2/3 justify-center items-start p-8">
             <h1 className="text-3xl md:text-5xl font-bold text-custom-orange tracking-loose">
               Lorem ipsum dolor
@@ -36,7 +37,7 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className="relative pt-16 bg-blueGray-50 h-screen">
+      <section className="relative pt-16 bg-gray-500">
         <div className="container mx-auto">
           <div className="flex flex-wrap items-center mx-auto">
             <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-24">
@@ -135,7 +136,10 @@ function Home() {
             </div>
           </div>
         </div>
+        <Footer/>
       </section>
+      
+
     </>
   );
 }
