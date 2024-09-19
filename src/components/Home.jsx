@@ -1,9 +1,19 @@
-import React from "react";
-// import { FaSitemap, FaDraftingCompass, FaNewspaper, FaFileAlt } from 'react-icons/fa';
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 function Home() {
+  const [plantingDate, setPlantingDate] = useState("");
+  const [calculatedDate, setCalculatedDate] = useState("");
+
+  function handleDuration(event) {
+    const selectedDate = new Date(event.target.value);
+    const newDate = new Date(selectedDate);
+    newDate.setDate(newDate.getDate() + 90); // Add 90 days
+    setCalculatedDate(newDate.toDateString()); // Format to readable string
+    setPlantingDate(event.target.value); // Store selected planting date
+  }
+
   return (
     <>
       <Navbar/>
@@ -68,33 +78,36 @@ function Home() {
               </div>
             </div>
             <div className="w-full md:w-6/12 px-4">
-            {/* <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg"> */}
-  <h1 className="text-4xl font-bold text-custom-orange mb-6 text-center">Calculator</h1>
-  
-  <div className="flex flex-col space-y-6">
-    <div>
-      <label 
-        htmlFor="plantingdate" 
-        className="block text-lg font-semibold text-gray-700 mb-2"
-      >
-        Planting Date
-      </label>
-      <input
-        type="date"
-        name="plantingdate"
-        id="plantingdate"
-        className="block w-full rounded-xl border-gray-300 py-2 px-4 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-base"
-      />
-    </div>
-  </div>
-</div>
-
+              <h1 className="text-4xl font-bold text-custom-orange mb-6 text-center">Calculator</h1>
+              <div className="flex flex-col space-y-6">
+                <div>
+                  <label 
+                    htmlFor="plantingdate" 
+                    className="block text-lg font-semibold text-gray-700 mb-2"
+                  >
+                    Planting Date
+                  </label>
+                  <input
+                    type="date"
+                    name="plantingdate"
+                    id="plantingdate"
+                    className="block rounded-xl border-custom-orange py-2 px-4 text-gray-900 shadow-xl"
+                    onChange={handleDuration}
+                  />
+                </div>
+                {calculatedDate && (
+                  <div className="mt-4">
+                    <p className="text-md font-semibold text-gray-700">
+                      Expected Harvest Date: <span className="text-custom-orange">{calculatedDate}</span>
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
         <Footer/>
       </section>
-      
-
     </>
   );
 }
