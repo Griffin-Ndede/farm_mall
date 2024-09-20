@@ -9,7 +9,7 @@ export default {
       colors: {
         'custom-orange': '#ff4900',
         'custom-blue': '#005f6a',
-        "custom-white": ""
+        "custom-green": "#839462"
       },
       screens: {
         'sm': '640px',
@@ -29,6 +29,10 @@ export default {
         semibold: 600,
         bold: 700,
         extrabold: 800,
+      },
+      backgroundImage:{
+        "farm":"url('https://furtherafrica.com/content-files/uploads/2021/12/agri_organic_kenya.jpg')",
+
       },
     },
   },

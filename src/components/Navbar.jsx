@@ -5,13 +5,12 @@ function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-      <div className="antialiased  sticky top-0">
+      <div className="antialiased ">
         <div className="w-full text-gray-700 bg-white dark:text-gray-200 dark:bg-gray-800">
           <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <div className="flex flex-row items-center justify-between p-4">
               <a
-                href="#"
-                className="text-xl font-bold text-gray-900 rounded-lg dark:text-white focus:outline-none focus:shadow-outline"
+                className="text-3xl font-bold text-custom-green rounded-lg dark:text-white focus:outline-none focus:shadow-outline"
               >
                 Farm Mall
               </a>
@@ -38,24 +37,24 @@ function Navbar() {
             </div>
             <nav className={`flex-col flex-grow ${open ? 'flex' : 'hidden'} pb-4 md:pb-0 md:flex md:justify-end md:flex-row`}>
               <a
-                className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:hover:bg-custom-green dark:focus:bg-custom-green dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                 href="#"
               >
                 About
               </a>
                <a
-                className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:hover:bg-custom-green dark:focus:bg-custom-green dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                 href="#calculator"
               >
                 Calculator
               </a>
               <Link to ="/login"
-                className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:hover:bg-custom-green dark:focus:bg-custom-green dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
               >
                 Login
               </Link>
               <Link to ="/signup"
-                className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:hover:bg-custom-green dark:focus:bg-custom-green dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
               >
                Sign up
               </Link>

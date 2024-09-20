@@ -29,7 +29,7 @@ function Home() {
       <section className="h-screen bg-gray-200">
         <div className="container mx-auto flex flex-col md:flex-row items-center pt-16 md:pt-24 px-4 sm:px-8">
           <div className="flex flex-col w-full lg:w-1/2 justify-center items-start p-4">
-            <h1 className="text-3xl md:text-5xl font-bold text-custom-orange tracking-loose">
+            <h1 className="text-3xl md:text-5xl font-bold text-custom-green tracking-loose">
               Lorem ipsum dolor
             </h1>
             <p className="text-sm md:text-base text-black mb-4 pt-4 md:pt-8">
@@ -40,7 +40,7 @@ function Home() {
             </p>
             <a
               href="#"
-              className="bg-transparent hover:bg-custom-orange text-black hover:text-white rounded-3xl shadow hover:shadow-lg py-1 px-2 border border-custom-orange hover:border-transparent"
+              className="bg-transparent hover:bg-custom-green text-black hover:text-white rounded-3xl shadow hover:shadow-lg py-1 px-2 border border-custom-green hover:border-transparent"
             >
               Lorem, ipsum.
             </a>
@@ -54,17 +54,17 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className="relative pt-16 h-full md:h-screen ">
+      <section className="relative pt-16 h-full md:h-screen">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center mx-auto justify-center gap-10">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-10">
             <div className="w-full md:w-6/12 lg:w-4/12 px-4">
-              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-custom-orange">
+              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl bg-custom-green">
                 <img
                   alt="farmer"
                   src="https://oneacrefund.org/sites/default/files/styles/short_banner_desktop/public/2022-10/ARK-OAF-Serabo-106.jpg?h=748d7e9c&itok=MS_QVqIn"
                   className="w-full object-cover h-48 md:h-64 align-middle rounded-t-lg"
                 />
-                <blockquote className="relative p-4 md:p-8 mb-4">
+                <blockquote className="relative p-4 md:p-8 rounded-b-xl bg-custom-green">
                   <svg
                     preserveAspectRatio="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -73,10 +73,10 @@ function Home() {
                   >
                     <polygon
                       points="-30,95 583,95 583,65"
-                      className="text-custom-orange fill-current"
+                      className="text-custom-green fill-current"
                     />
                   </svg>
-                  <h4 className="text-lg md:text-xl font-bold text-custom-orange">
+                  <h4 className="text-lg md:text-xl font-bold text-white">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </h4>
                   <p className="text-xs md:text-sm font-light mt-2">
@@ -87,8 +87,8 @@ function Home() {
                 </blockquote>
               </div>
             </div>
-            <div className="w-full md:w-6/12 px-4">
-              <h1 id="calculator"className="text-2xl md:text-4xl font-bold text-custom-orange mb-6 text-center">
+            <div className="w-full   md:w-6/12 px-4">
+              <h1 id="calculator"className="text-2xl md:text-4xl font-bold text-custom-green mb-6 text-center">
                 Calculator
               </h1>
               <div className="flex flex-col space-y-6">
@@ -103,7 +103,7 @@ function Home() {
                     type="date"
                     name="plantingdate"
                     id="plantingdate"
-                    className="block w-2/3 rounded-xl border-custom-orange py-2 px-4 shadow-xl"
+                    className="block w-2/3 rounded-xl py-2 px-4 shadow-xl"
                     onChange={handleDuration}
                   />
                 </div>
@@ -111,7 +111,7 @@ function Home() {
                   <div className="mt-4">
                     <p className="text-md font-semibold text-gray-700">
                       Expected Harvest Date:{" "}
-                      <span className="text-custom-orange">
+                      <span className="text-custom-green">
                         {calculatedDate}
                       </span>
                     </p>
@@ -129,8 +129,7 @@ function Home() {
                     type="number"
                     name="acres"
                     id="acres"
-                    placeholder="Enter number of acres"
-                    className="block w-2/3 rounded-xl border-custom-orange py-2 px-4  shadow-xl"
+                    className="block w-2/3 rounded-xl  py-2 px-4  shadow-xl"
                     onChange={handleCostCalculation}
                   />
                 </div>
@@ -138,7 +137,7 @@ function Home() {
                   <div className="mt-4">
                     <p className="text-md font-semibold text-gray-700">
                       Estimated Planting Cost:{" "}
-                      <span className="text-custom-orange">
+                      <span className="text-custom-green">
                         Ksh {estimatedCost.toLocaleString()}
                       </span>
                     </p>
