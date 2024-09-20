@@ -1,7 +1,23 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import { Link } from 'react-router-dom'
 
 function Signup() {
+  // handles storage of input data for each input field
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  });
+
+  // handles input change for each input field
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
   return (
     <>
     <div className="flex h-screen w-full items-center justify-center bg-farm2 bg-cover bg-no-repeat">
@@ -13,39 +29,47 @@ function Signup() {
           </div>
           <form action="#" className="flex flex-col items-center">
             <div className="mb-4 w-full text-sm">
-              <label>First name</label>
+              <label htmlFor='firstname'>First name</label>
               <input 
                 className="w-full max-w-xs rounded-3xl border-none bg-custom-green bg-opacity-25 px-4 py-2 text-center text-white placeholder-slate-200 placeholder-opacity-50 shadow-lg outline-none backdrop-blur-md" 
                 type="text" 
-                name="firstname" 
-                placeholder="John" 
+                name="firstName" 
+                placeholder="John"
+                value={formData.firstName} 
+                onChange={handleInputChange}
               />
             </div>
             <div className="mb-4 w-full text-sm">
-              <label>Last name</label>
+              <label htmlFor='lastname'>Last name</label>
               <input 
                 className="w-full max-w-xs rounded-3xl border-none bg-custom-green bg-opacity-25 px-4 py-2 text-center text-white placeholder-slate-200 placeholder-opacity-50 shadow-lg outline-none backdrop-blur-md" 
                 type="text" 
-                name="lastname" 
+                name="lastName" 
                 placeholder="Doe" 
+                value={formData.lastName}
+                onChange={handleInputChange}
               />
             </div>
 
             <div className="mb-4 w-full text-sm">
-              <label>Email</label>
+              <label htmlFor='email'>Email</label>
               <input 
                 className="w-full max-w-xs rounded-3xl border-none bg-custom-green bg-opacity-25 px-4 py-2 text-center text-white placeholder-slate-200 placeholder-opacity-50 shadow-lg outline-none backdrop-blur-md" 
                 type="text" 
                 name="email" 
                 placeholder="john@gmail.com" 
+                value={formData.email}
+                onChange={handleInputChange}
               />
             </div>
             <div className="mb-4 w-full text-sm">
-              <label>Password</label>
+              <label htmlFor='password'>Password</label>
               <input 
                 className="w-full max-w-xs rounded-3xl border-none bg-custom-green bg-opacity-25 px-4 py-2 text-center text-white placeholder-slate-200 placeholder-opacity-50 shadow-lg outline-none backdrop-blur-md" 
                 type="password" 
                 name="password" 
+                value={formData.password}
+                onChange={handleInputChange}
               />
             </div>
             
@@ -56,7 +80,11 @@ function Signup() {
                   Create account
               </button>
             </div>
-            <p className='text-xs sm:text-sm'>Have an account? <Link to="/login" className="text-yellow-500 underline">Sign in</Link>.</p>
+            <p className='text-xs sm:text-sm'>Have an account? 
+                <Link to="/login" className="text-yellow-500 underline">
+                    Sign in
+                </Link>.
+              </p>
           </form>
         </div>
       </div>
