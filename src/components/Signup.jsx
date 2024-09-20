@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Signup() {
   return (
     <>
-    <div className="flex h-screen w-full items-center justify-center bg-farm bg-cover bg-no-repeat">
+    <div className="flex h-screen w-full items-center justify-center bg-farm2 bg-cover bg-no-repeat">
       <div className="rounded-xl bg-black w-full max-w-md lg:w-1/3 bg-opacity-25 px-8 sm:px-12 lg:px-16 py-10 shadow-lg backdrop-blur-md">
         <div className="text-white">
           <div className="mb-8 flex flex-col items-center">
@@ -51,12 +52,11 @@ function Signup() {
             <div className="mt-8 flex justify-center w-full max-w-xs text-lg text-black mb-10">
               <button 
                 type="submit" 
-                className="w-full max-w-xs rounded-3xl border-none bg-custom-green bg-opacity-25 px-4 py-2 text-center text-white placeholder-slate-200 shadow-lg outline-none backdrop-blur-md">
+                className="w-full max-w-xs rounded-3xl border-none bg-custom-green bg-opacity-25 px-4 py-2 text-center text-white text-md placeholder-slate-200 shadow-lg outline-none backdrop-blur-md">
                   Create account
               </button>
             </div>
-            
-            <p className='text-xs sm:text-sm'>Have an account? <a href="#" className="text-yellow-500 underline">Sign in</a>.</p>
+            <p className='text-xs sm:text-sm'>Have an account? <Link to="/login" className="text-yellow-500 underline">Sign in</Link>.</p>
           </form>
         </div>
       </div>

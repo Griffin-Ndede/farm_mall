@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Login() {
   return (
@@ -13,7 +14,7 @@ function Login() {
             <form action="#" className="flex flex-col items-center">
               <div className="mb-4 w-full text-sm">
                 <input 
-                  className="w-full max-w-xs rounded-3xl border-none bg-custom-green bg-opacity-25 px-4 py-2 text-center text-white placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" 
+                  className="w-full max-w-xs rounded-3xl border-none bg-custom-green bg-opacity-25 px-4 py-2 text-center text-white placeholder-slate-200 placeholder-opacity-50 shadow-lg outline-none backdrop-blur-md" 
                   type="text" 
                   name="name" 
                   placeholder="id@email.com" 
@@ -22,7 +23,7 @@ function Login() {
 
               <div className="mb-4 w-full text-sm">
                 <input 
-                  className="w-full max-w-xs rounded-3xl border-none bg-custom-green bg-opacity-25 px-4 py-2 text-center text-white placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" 
+                  className="w-full max-w-xs rounded-3xl border-none bg-custom-green bg-opacity-25 px-4 py-2 text-center text-white placeholder-slate-200 placeholder-opacity-50 shadow-lg outline-none backdrop-blur-md" 
                   type="password" 
                   name="password" 
                   placeholder="*********" 
@@ -37,7 +38,7 @@ function Login() {
                 </button>
               </div>
               
-              <p className='text-xs sm:text-sm'>Don't have an account? <a href="#" className="text-yellow-500 underline">Register</a>.</p>
+              <p className='text-xs sm:text-sm'>Don't have an account? <Link to="/signup" className="text-yellow-500 underline">Register</Link>.</p>
             </form>
           </div>
         </div>

@@ -32,6 +32,7 @@ export default {
       },
       backgroundImage:{
         "farm":"url('https://furtherafrica.com/content-files/uploads/2021/12/agri_organic_kenya.jpg')",
+        "farm2": "url('https://kenyanwallstreet.com/wp-content/uploads/2022/06/Microsoft.webp')",
 
       },
     },
