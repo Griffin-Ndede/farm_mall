@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(''); // Username or email
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -11,16 +11,18 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/api-token-auth/', {
-        username: email,
+      const response = await axios.post('http://127.0.0.1:8000/login/', {
+        username: email,  // Use 'username' as per your backend's expected payload
         password: password,
       });
 
-      // Assuming the backend returns the token on success
-      const token = response.data.token;
+      // Assuming the backend returns the tokens on success
+      const refreshToken = response.data.refresh;
+      const accessToken = response.data.access;
 
-      // Store token in localStorage (or any other storage mechanism)
-      localStorage.setItem('token', token);
+      // Store tokens in localStorage (or any other storage mechanism)
+      localStorage.setItem('refreshToken', refreshToken);
+      localStorage.setItem('accessToken', accessToken);
 
       // Redirect to a different page after successful login
       navigate('/dashboard');
@@ -43,9 +45,9 @@ function Login() {
               <div className="mb-4 w-full text-sm">
                 <input
                   className="w-full max-w-xs rounded-3xl border-none bg-custom-green bg-opacity-25 px-4 py-2 text-center text-white placeholder-slate-200 placeholder-opacity-50 shadow-lg outline-none backdrop-blur-md"
-                  type="email"
+                  type="text" // Changed to text to accommodate username/email
                   name="email"
-                  placeholder="id@email.com"
+                  placeholder="username or email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
