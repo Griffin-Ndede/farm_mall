@@ -24,24 +24,38 @@ function Signup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await axios.post('http://127.0.0.1:8000/register/', {
-        username: formData.username,  // Send username to backend
+        username: formData.username,
         first_name: formData.firstName,
         last_name: formData.lastName,
         email: formData.email,
         password: formData.password,
-        password2: formData.password2,  // Ensure password confirmation is sent
+        password2: formData.password2,
       });
-
+  
       if (response.status === 201) {
         navigate('/login');
       }
     } catch (error) {
-      setError('Registration failed. Please check your details and try again.');
+      // Log the full error response for debugging
+      console.error('Registration error:', error.response.data);
+      
+      // Provide a more informative error message
+      if (error.response && error.response.data) {
+        // Log specific validation errors if available
+        if (error.response.data.password) {
+          setError(error.response.data.password[0]); // Display the first error message for the password
+        } else {
+          setError('Registration failed. Please check your details and try again.');
+        }
+      } else {
+        setError('Registration failed. Please try again later.');
+      }
     }
   };
+  
 
   return (
     <div className="flex h-screen w-full items-center justify-center">
@@ -65,7 +79,7 @@ function Signup() {
               />
             </div>
             <div className="mb-4 w-full text-sm">
-              <label htmlFor="firstname">First name</label>
+              <label htmlFor="firstName">First name</label>
               <input
                 className="w-full max-w-xs rounded-3xl font text-black py-2 px-4"
                 type="text"
@@ -77,7 +91,7 @@ function Signup() {
               />
             </div>
             <div className="mb-4 w-full text-sm">
-              <label htmlFor="lastname">Last name</label>
+              <label htmlFor="lastName">Last name</label>
               <input
                 className="w-full max-w-xs rounded-3xl font text-black py-2 px-4"
                 type="text"
