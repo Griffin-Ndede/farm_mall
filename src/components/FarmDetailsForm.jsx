@@ -5,6 +5,7 @@ function FarmDetailsForm() {
   const [formData, setFormData] = useState({
     activity: '',
     county: '',
+    date: '',
     fertilizer_type: '',
     irrigation_used: '',
     notes: '',
@@ -31,6 +32,7 @@ function FarmDetailsForm() {
         successAlert();
         setFormData({ 
           activity: '',
+          date: '',
           county: '',
           fertilizer_type: '',
           irrigation_used: '',
@@ -52,7 +54,7 @@ function FarmDetailsForm() {
       icon: 'success',
       confirmButtonText: 'OK',
     }).then(() => {
-      window.location.href = '/products'; // Corrected redirect
+      window.location.href = '/farmmanagement'; // Corrected redirect
     });
   };
 
@@ -73,8 +75,8 @@ function FarmDetailsForm() {
       className="bg-custom-green p-8 rounded-2xl shadow-xl w-full max-w-4xl">
         <h1 className="text-2xl font-bold mb-2 text-center text-white">Share information about recent activities on your farm?</h1>
         <p className='text-sm mb-10 text-center text-white'>The information you provide will help us give you estimates for your farm.</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="flex flex-col md:flex-row items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+          <div className="flex flex-col md:flex-row items-center ">
             <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="activity">Activity</label>
             <select
               name="activity" 
@@ -89,6 +91,18 @@ function FarmDetailsForm() {
               <option value="Weeding">Weeding</option>
               <option value="Applying fertilizer">Applying fertilizer</option>
             </select>
+          </div>
+          <div className="flex flex-col md:flex-row items-center">
+            <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="county">Date</label>
+            <input
+              type="date" 
+              name="date"
+              id="date"
+              value={formData.date}
+              onChange={handleChange}
+              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl text-black" // Added text-black
+              required
+            />
           </div>
           <div className="flex flex-col md:flex-row items-center">
             <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="county">County</label>

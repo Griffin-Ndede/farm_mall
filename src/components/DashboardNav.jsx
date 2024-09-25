@@ -1,12 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function DashboardNav({ setActiveComponent }) {
   return (
     <div className="bg-custom-green rounded-lg p-4 h-screen">
+      <Link to = "/">
       <h1 className="font-bold text-lg lg:text-3xl bg-black bg-clip-text text-transparent">
         Farm Mall<span className="text-custom-green">.</span>
       </h1>
-      <p className="text-black text-xs mb-2">Welcome back,</p>
+      </Link>
+      <p className="text-black text-xs mb-2">Welcome back to your Farm Mall dashboard</p>
       <div className="flex flex-col space-y-2 my-5">
         <button
           onClick={() => setActiveComponent('FarmDetailsForm')}
