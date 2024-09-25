@@ -67,10 +67,12 @@ function FarmDetailsForm() {
   };
 
   return (
-    <div className="bottom-0 flex justify-center items-center p-6 ">
-      <form onSubmit={handleSubmit} className="bg-black p-8 rounded-2xl shadow-xl w-full max-w-4xl">
-        <h1 className="text-2xl font-bold mb-2 text-center text-custom-green">Share information about recent activities on your farm?</h1>
-        <p className='text-sm mb-10 text-center'>The information you provide will help us give you estimates for your farm.</p>
+    <>
+    <form 
+      onSubmit={handleSubmit} 
+      className="bg-custom-green p-8 rounded-2xl shadow-xl w-full max-w-4xl">
+        <h1 className="text-2xl font-bold mb-2 text-center text-white">Share information about recent activities on your farm?</h1>
+        <p className='text-sm mb-10 text-center text-white'>The information you provide will help us give you estimates for your farm.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col md:flex-row items-center">
             <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="activity">Activity</label>
@@ -156,11 +158,11 @@ function FarmDetailsForm() {
             />
           </div>
         </div>
-        <button type="submit" className="mt-6 w-full bg-custom-green text-white py-2 px-4 rounded-xl hover:bg-green transition duration-300">
+        <button type="submit" className="mt-6 w-full bg-green text-white py-2 px-4 rounded-xl hover:bg-green transition duration-300">
           Submit
         </button>
       </form>
-    </div>
+    </>
   );
 }
 

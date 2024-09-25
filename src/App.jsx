@@ -6,6 +6,7 @@ import { BrowserRouter, Route , Routes} from 'react-router-dom'
 import Dashboard from './components/Dashboard'
 import FarmDetailsForm from './components/FarmDetailsForm'
 import FarmManagement from './components/FarmManagement'
+import Projections from './components/Projections'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route path= "/dashboard" element={<Dashboard/>}></Route>
       <Route path="/farmdetailsform" element={<FarmDetailsForm/>}></Route>
       <Route path="/farmmanagement" element = {<FarmManagement/>}></Route>
+      <Route path="/projections" element= {<Projections/>}></Route>
     </Routes>
     </BrowserRouter>
     </>
