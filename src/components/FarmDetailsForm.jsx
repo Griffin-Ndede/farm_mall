@@ -6,13 +6,11 @@ import Swal from 'sweetalert2';
 
 function FarmDetailsForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    item: '',
-    location: '',
-    startDate: '',
-    endDate: ''
+    planting_date: '',
+    county: '',
+    fertilizer_type: '',
+    irrigation_used: '',
+    notes: '',
   });
 
   const handleChange = (e) => {
@@ -25,7 +23,7 @@ function FarmDetailsForm() {
       data.append(key, formData[key]);
     });
     try {
-      const response = await fetch("http://127.0.0.1:8000/submit_contact_form/", {
+      const response = await fetch("http://127.0.0.1:8000/potato/", {
         method: 'POST',
         body: data,
       });
@@ -34,13 +32,11 @@ function FarmDetailsForm() {
         successAlert();
         setFormData(
           { 
-            name: '',
-            email: '',
-            phone: '',
-            item: '',
-            location: '',
-            startDate: '',
-            endDate: ''
+            planting_date: '',
+            county: '',
+            fertilizer_type: '',
+            irrigation_used: '',
+            notes: '',
           }
         ); 
       }else{
@@ -58,7 +54,7 @@ function FarmDetailsForm() {
       icon: 'success',
       confirmButtonText: 'OK',
     }).then(() => {
-      window.location.href = '/products';
+      window.notes.href = '/products';
     });
   };
 
@@ -73,97 +69,93 @@ function FarmDetailsForm() {
   };
 
   return (
-    <div className="bottom-0 flex justify-center items-center p-6 bg-gray-100">
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-4xl">
-        <h1 className="text-2xl font-bold mb-2 text-center text-custom-orange">Did not find what you were looking for?</h1>
-        <p className='text-sm  mb-10 text-center'>If you didn't find what you were looking for on our platform, let us know, and we'll do our best to find it for you.</p>
+    <div className="bottom-0 flex justify-center items-center p-6 ">
+      <form onSubmit={handleSubmit} className="bg-black p-8 rounded-2xl shadow-xl w-full max-w-4xl">
+        <h1 className="text-2xl font-bold mb-2 text-center text-custom-green">Share information about recent activities on your farm?</h1>
+        <p className='text-sm  mb-10 text-center'>The information you provide will help us give you estimates for your farm.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col md:flex-row items-center">
-            <label className="w-full md:w-1/3 text-gray-700 font-normal text-xs mb-2 md:mb-0" htmlFor="name">Name</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl"
-              required
-            />
-          </div>
-          <div className="flex flex-col md:flex-row items-center">
-            <label className="w-full md:w-1/3 text-gray-700 font-normal text-xs mb-2 md:mb-0" htmlFor="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl"
-              required
-            />
-          </div>
-          <div className="flex flex-col md:flex-row items-center">
-            <label className="w-full md:w-1/3 text-gray-700 font-normal text-xs mb-2 md:mb-0" htmlFor="phone">Phone Number</label>
-            <input
-              type="tel"
-              name="phone"
-              id="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl"
-              required
-            />
-          </div>
-          <div className="flex flex-col md:flex-row items-center">
-            <label className="w-full md:w-1/3 text-gray-700 font-normal text-xs mb-2 md:mb-0" htmlFor="item">Item request</label>
-            <input
-              type="text"
-              name="item"
-              id="item"
-              value={formData.item}
-              onChange={handleChange}
-              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl"
-              required
-            />
-          </div>
-          <div className="flex flex-col md:flex-row items-center">
-            <label className="w-full md:w-1/3 text-gray-700 font-normal text-xs mb-2 md:mb-0" htmlFor="location">Current Location</label>
-            <input
-              type="text"
-              name="location"
-              id="location"
-              value={formData.location}
-              onChange={handleChange}
-              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl"
-              required
-            />
-          </div>
-          <div className="flex flex-col md:flex-row items-center">
-          <label className="w-full md:w-1/3 text-gray-700 font-normal text-xs mb-2 md:mb-0" htmlFor="startDate">Rental Dates</label>
-          <div className="flex w-full md:w-2/3">
+            <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="plantingdate">Planting date</label>
             <input
               type="date"
-              name="startDate"
-              id="startDate"
-              value={formData.startDate}
+              name="plantingdate"
+              id="plantingdate"
+              value={formData.planting_date}
               onChange={handleChange}
-              className="w-1/2 p-1 border border-gray-300 rounded-xl mr-1 placeholder-gray-100 text-xs"
-              required
-            />
-            <input
-              type="date"
-              name="endDate"
-              id="endDate"
-              value={formData.endDate}
-              onChange={handleChange}
-              className="w-1/2 p-1 border border-gray-300 rounded-xl placeholder-gray-100 text-xs"
+              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl"
               required
             />
           </div>
-        </div>
+          <div className="flex flex-col md:flex-row items-center">
+            <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="county">County</label>
+            <input
+              type="county"
+              name="county"
+              id="county"
+              value={formData.county}
+              onChange={handleChange}
+              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl"
+              required
+            />
+          </div>
+          <div className="flex flex-col md:flex-row items-center">
+            <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="fertilizer">Fertilizer type</label>
+            <input
+              type="text"
+              name="fertilizer"
+              id="fertilizer"
+              value={formData.fertilizer_type}
+              onChange={handleChange}
+              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl"
+              required
+            />
+          </div>
+          <div className="flex flex-col md:flex-row items-center">
+  <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="irrigation_used">
+    Irrigation used
+  </label>
+  <div className="w-full md:w-2/3 flex items-center">
+    <label className="flex items-center mr-4">
+      <input
+        type="radio"
+        name="irrigation_used"
+        value="yes"
+        checked={formData.irrigation_used === 'yes'}
+        onChange={handleChange}
+        className="mr-2"
+        required
+      />
+      Yes
+    </label>
+    <label className="flex items-center">
+      <input
+        type="radio"
+        name="irrigation_used"
+        value="no"
+        checked={formData.irrigation_used === 'no'}
+        onChange={handleChange}
+        className="mr-2"
+        required
+      />
+      No
+    </label>
+  </div>
+</div>
 
+          <div className="flex flex-col md:flex-row items-center">
+            <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="notes">Notes</label>
+            <input
+              type="text"
+              name="notes"
+              id="notes"
+              value={formData.notes}
+              onChange={handleChange}
+              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl"
+              required
+            />
+          </div>
         </div>
-        <button type="submit" className="mt-6 w-full bg-custom-orange text-white py-2 px-4 rounded-xl hover:bg-orange-500 transition duration-300">
+        <button type="submit" className="mt-6 w-full bg-custom-green text-white py-2 px-4 rounded-xl hover:bg-orange-500 transition duration-300">
           Submit
         </button>
       </form>
