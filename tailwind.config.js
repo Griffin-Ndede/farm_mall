@@ -9,7 +9,8 @@ export default {
       colors: {
         'custom-orange': '#ff4900',
         'custom-blue': '#005f6a',
-        "custom-green": "#839462"
+        "custom-green": "#839462",
+        "green":"#476318"
       },
       screens: {
         'sm': '640px',
