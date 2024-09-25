@@ -5,6 +5,8 @@ import Signup from './components/Signup'
 import { BrowserRouter, Route , Routes} from 'react-router-dom'
 import Dashboard from './components/Dashboard'
 import FarmDetailsForm from './components/FarmDetailsForm'
+import FarmManagement from './components/FarmManagement'
+
 
 function App() {
 
@@ -17,6 +19,7 @@ function App() {
       <Route path="/signup" element={<Signup/>}></Route>
       <Route path= "/dashboard" element={<Dashboard/>}></Route>
       <Route path="/farmdetailsform" element={<FarmDetailsForm/>}></Route>
+      <Route path="/farmmanagement" element = {<FarmManagement/>}></Route>
     </Routes>
     </BrowserRouter>
     </>
