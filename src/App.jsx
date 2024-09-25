@@ -4,6 +4,7 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import { BrowserRouter, Route , Routes} from 'react-router-dom'
 import Dashboard from './components/Dashboard'
+import FarmDetailsForm from './components/FarmDetailsForm'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <Route path="/login" element={<Login/>}></Route>
       <Route path="/signup" element={<Signup/>}></Route>
       <Route path= "/dashboard" element={<Dashboard/>}></Route>
+      <Route path="/farmdetailsform" element={<FarmDetailsForm/>}></Route>
     </Routes>
     </BrowserRouter>
     </>

@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import FarmDetailsForm from './FarmDetailsForm';
 
 function Dashboard() {
   const [crops, setCrops] = useState([]);
@@ -24,7 +26,7 @@ function Dashboard() {
         <div className="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
             <div id="menu" className="bg-white/10 col-span-3 rounded-lg p-4 ">
                 <h1 className="font-bold text-lg lg:text-3xl bg-gradient-to-br from-custom-green via-white/50 to-transparent bg-clip-text text-transparent">Farm Mall<span className="text-custom-green">.</span></h1>
-                <p className="text-slate-400 text-sm mb-2">Welcome back,</p>
+                <p className="text-slate-400 text-xs mb-2">Welcome back,</p>
                 <a href="#" className="flex flex-col space-y-2 md:space-y-0 md:flex-row mb-5 items-center md:space-x-2 hover:bg-white/10 group transition duration-150 ease-linear rounded-lg group w-full py-3 px-2">
                     <div>
                         <img className="rounded-full w-10 h-10 relative object-cover" src="https://img.freepik.com/free-photo/no-problem-concept-bearded-man-makes-okay-gesture-has-everything-control-all-fine-gesture-wears-spectacles-jumper-poses-against-pink-wall-says-i-got-this-guarantees-something_273609-42817.jpg?w=1800&t=st=1669749937~exp=1669750537~hmac=4c5ab249387d44d91df18065e1e33956daab805bee4638c7fdbf83c73d62f125" alt=""></img>
@@ -45,10 +47,10 @@ function Dashboard() {
                                   
                             </div>
                             <div>
-                                <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-custom-green">Dashboard</p>
-                            <p className="text-slate-400 text-sm hidden md:block">Data overview</p>
+                                <Link to= "/farmdetailsform"><p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-custom-green">Farm details</p>
+                                <p className="text-slate-400 text-xs hidden md:block">Fill in your farm details</p>
+                                </Link>
                             </div>
-                            
                         </div>
                     </a>
                     <a href="#" className="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
@@ -60,7 +62,7 @@ function Dashboard() {
                             </div>
                             <div>
                                 <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-custom-green">Invoices</p>
-                            <p className="text-slate-400 text-sm hidden md:block">Manage invoices</p>
+                            <p className="text-slate-400 text-xs hidden md:block">Manage invoices</p>
                             </div>
                         </div>
                     </a>
@@ -73,7 +75,7 @@ function Dashboard() {
                             </div>
                             <div>
                                 <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-custom-green">Users</p>
-                            <p className="text-slate-400 text-sm hidden md:block">Manage users</p>
+                            <p className="text-slate-400 text-xs hidden md:block">Manage users</p>
                             </div>
                             
                         </div>
@@ -89,13 +91,13 @@ function Dashboard() {
                             </div>
                             <div>
                                 <p className="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-custom-green">Settings</p>
-                            <p className="text-slate-400 text-sm hidden md:block">Edit settings</p>
+                            <p className="text-slate-400 text-xs hidden md:block">Edit settings</p>
                             </div>
                             
                         </div>
                     </a>
                 </div>
-                <p className="text-sm text-center text-gray-600">v1.0 | &copy; 2024 Farm Mall</p>
+                <p className="text-xs text-center text-gray-600">v1.0 | &copy; 2024 Farm Mall</p>
             </div>
             <div id="content" className="bg-white/10 col-span-9 rounded-lg p-6">
                 <div id="24h">
@@ -109,7 +111,7 @@ function Dashboard() {
                                       </svg>
                                 </div>
                                 <div>
-                                    <p className="text-indigo-300 text-sm font-medium  leading-4">Users</p>
+                                    <p className="text-indigo-300 text-xs font-medium  leading-4">Users</p>
                                     <p className="text-white font-bold text-2xl inline-flex items-center space-x-2">
                                         <span>+28</span>
                                         <span>
@@ -123,6 +125,7 @@ function Dashboard() {
                         </div>
                     </div>
                 </div>
+                <FarmDetailsForm/>
                 <div id="last-incomes">
                     <h1 className="font-bold py-4 ">Last 24h incomes</h1>
                     <div id="stats" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -132,7 +135,7 @@ function Dashboard() {
                 <div className="p-2">
                     <p className="text-xl font-bold">28$</p>
                     <p className="text-gray-500 font-medium">Tony Ankel</p>
-                    <p className="text-gray-500 text-sm">22 Nov 2022</p>
+                    <p className="text-gray-500 text-xs">22 Nov 2022</p>
                 </div>
             </div>
             <div className="border-t border-white/5 p-4">
@@ -164,9 +167,9 @@ function Dashboard() {
         <tr key={crop.id} className="border-b border-gray-700">
             <td className="py-3 px-2 font-bold">
                 <div className="inline-flex space-x-3 items-center">
-                    <span>
+                    {/* <span>
                         <img className="rounded-full w-8 h-8" src={crop.imageUrl} alt="" />
-                    </span>
+                    </span> */}
                     <span>Potato</span>
                 </div>
             </td>
@@ -177,9 +180,7 @@ function Dashboard() {
 
         </tr>
     ))}
-</tbody>
-
-                            
+</tbody>          
                         </table>
                     </div>
                 </div>
