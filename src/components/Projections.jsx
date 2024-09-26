@@ -1,33 +1,69 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
-function Projections({setActiveComponent}) {
+function Projections({ setActiveComponent }) {
+  const [crops, setCrops] = useState([]);
+  const URL = 'http://127.0.0.1:8000/potato/';
+  
+  useEffect(() => {
+    const fetchCrops = async () => {
+      try {
+        const response = await axios.get(URL);
+        setCrops(response.data);
+      } catch (error) {
+        console.error("Error fetching crops:", error);
+        Swal.fire({
+          title: 'Error',
+          text: "Failed to fetch crop data",
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+      }
+    };
+
+    fetchCrops();
+  }, []);
+
+  const calculateProjections = (activity, date) => {
+    const dateObj = new Date(date);
+    let projectionDates = [];
+
+    switch (activity) {
+      case "Weeding":
+        projectionDates.push(new Date(dateObj.getTime() + 7 * 24 * 60 * 60 * 1000)); // Example: Weed after 7 days
+        break;
+      case "Applying fertilizer":
+        projectionDates.push(new Date(dateObj.getTime() + 14 * 24 * 60 * 60 * 1000)); // Example: Fertilize after 14 days
+        break;
+      case "Harvesting":
+        projectionDates.push(new Date(dateObj.getTime() + 90 * 24 * 60 * 60 * 1000)); // Example: Harvest after 90 days
+        break;
+      // Add more cases as necessary
+      default:
+        break;
+    }
+
+    return projectionDates.map(date => date.toLocaleDateString()).join(', ');
+  };
+
   return (
     <>
-       <div id="last-incomes" className="mt-6">
-            <h1 className="font-bold py-4">Last 24h incomes</h1>
-            <div id="stats" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              <div className="bg-black/60 to-white/5 rounded-lg">
-                <div className="flex flex-row items-center">
-                  <div className="text-3xl p-4">💰</div>
-                  <div className="p-2">
-                    <p className="text-xl font-bold">28$</p>
-                    <p className="text-gray-500 font-medium">Tony Ankel</p>
-                    <p className="text-gray-500 text-xs">22 Nov 2022</p>
-                  </div>
-                </div>
-                <div className="border-t border-white/5 p-4">
-                  <a href="#" className="inline-flex space-x-2 items-center text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
-                      <path d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-                    </svg>
-                    <span>Info</span>
-                  </a>
-                </div>
-              </div>
+      <div id="projections" className="">
+        <h1 className="font-bold text-black">Crop Projections</h1>
+        <div id="stats" className="grid grid-cols-1 gap-4">
+          {crops.map((crop) => (
+            <div key={crop.id} className="bg-custom-green rounded-lg p-4">
+              <h2 className="text-lg font-bold">Activity: {crop.activity}</h2>
+              <p className="text-white">Date: {new Date(crop.date).toLocaleDateString()}</p>
+              <p className="text-white">County: {crop.county}</p>
+              <p className="text-white">Projected Dates: {calculateProjections(crop.activity, crop.date)}</p>
             </div>
-          </div>
+          ))}
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default Projections
+export default Projections;
