@@ -23,7 +23,7 @@ function FarmDetailsForm() {
     });
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/potato/", {
+      const response = await fetch("https://farmmall-backend.onrender.com/potato/", {
         method: 'POST',
         body: data,
       });

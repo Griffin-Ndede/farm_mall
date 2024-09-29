@@ -4,7 +4,7 @@ import LinesEllipsis from 'react-lines-ellipsis';
 
 function FarmManagement() {
   const [crops, setCrops] = useState([]);
-  const URL = 'http://127.0.0.1:8000/potato/';
+  const URL = 'https://farmmall-backend.onrender.com/potato/';
 
   useEffect(() => {
     const fetchCrops = async () => {
