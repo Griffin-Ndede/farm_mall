@@ -25,26 +25,20 @@ function Projections({ setActiveComponent }) {
     fetchCrops();
   }, []);
 
-  const calculateProjections = (activity, date) => {
+  // Function to calculate exact dates for weeding, fertilizer application, and harvesting
+  const calculateProjections = (date) => {
     const dateObj = new Date(date);
-    let projectionDates = [];
 
-    switch (activity) {
-      case "Weeding":
-        projectionDates.push(new Date(dateObj.getTime() + 7 * 24 * 60 * 60 * 1000)); // Example: Weed after 7 days
-        break;
-      case "Applying fertilizer":
-        projectionDates.push(new Date(dateObj.getTime() + 14 * 24 * 60 * 60 * 1000)); // Example: Fertilize after 14 days
-        break;
-      case "Harvesting":
-        projectionDates.push(new Date(dateObj.getTime() + 90 * 24 * 60 * 60 * 1000)); // Example: Harvest after 90 days
-        break;
-      // Add more cases as necessary
-      default:
-        break;
-    }
+    // Specific dates for each activity based on planting date
+    const weedingDate = new Date(dateObj.getTime() + 7 * 24 * 60 * 60 * 1000); // 7 days after planting
+    const fertilizerDate = new Date(dateObj.getTime() + 14 * 24 * 60 * 60 * 1000); // 14 days after planting
+    const harvestingDate = new Date(dateObj.getTime() + 90 * 24 * 60 * 60 * 1000); // 90 days after planting
 
-    return projectionDates.map(date => date.toLocaleDateString()).join(', ');
+    return {
+      weedingDate: weedingDate.toLocaleDateString(),
+      fertilizerDate: fertilizerDate.toLocaleDateString(),
+      harvestingDate: harvestingDate.toLocaleDateString(),
+    };
   };
 
   return (
@@ -52,14 +46,19 @@ function Projections({ setActiveComponent }) {
       <div id="projections" className="">
         <h1 className="font-bold text-black">Crop Projections</h1>
         <div id="stats" className="grid grid-cols-1 gap-4">
-          {crops.map((crop) => (
-            <div key={crop.id} className="bg-custom-green rounded-lg p-4">
-              <h2 className="text-lg font-bold">Activity: {crop.activity}</h2>
-              <p className="text-white">Date: {new Date(crop.date).toLocaleDateString()}</p>
-              <p className="text-white">County: {crop.county}</p>
-              <p className="text-white">Projected Dates: {calculateProjections(crop.activity, crop.date)}</p>
-            </div>
-          ))}
+          {crops.map((crop) => {
+            const { weedingDate, fertilizerDate, harvestingDate } = calculateProjections(crop.date);
+
+            return (
+              <div key={crop.id} className="bg-custom-green rounded-lg p-4">
+                <h2 className="text-lg font-bold">Activity: {crop.activity}</h2>
+                <p className="text-white">Planting Date: {new Date(crop.date).toLocaleDateString()}</p>
+                <p className="text-white">Weeding Date: {weedingDate}</p>
+                <p className="text-white">Fertilizer Application Date: {fertilizerDate}</p>
+                <p className="text-white">Harvesting Date: {harvestingDate}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>
