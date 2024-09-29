@@ -11,7 +11,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/login/', {
+      const response = await axios.post('https://farmmall-backend.onrender.com/login/', {
         username: email,  // Use 'username' as per your backend's expected payload
         password: password,
       });

@@ -26,7 +26,7 @@ function Signup() {
     e.preventDefault();
   
     try {
-      const response = await axios.post('http://127.0.0.1:8000/register/', {
+      const response = await axios.post('https://farmmall-backend.onrender.com/register/', {
         username: formData.username,
         first_name: formData.firstName,
         last_name: formData.lastName,
