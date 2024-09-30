@@ -70,20 +70,26 @@ function FarmDetailsForm() {
 
   return (
     <>
-    <form 
-      onSubmit={handleSubmit} 
-      className="bg-custom-green p-8 rounded-2xl shadow-xl w-full max-w-4xl">
-        <h1 className="text-2xl font-bold mb-2 text-center text-white">Share information about recent activities on your farm?</h1>
-        <p className='text-sm mb-10 text-center text-white'>The information you provide will help us give you estimates for your farm.</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+      <form 
+        onSubmit={handleSubmit} 
+        className="bg-custom-green p-8 ml-8 rounded-2xl shadow-xl w-full max-w-4xl">
+        <h1 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-center text-white">
+          Share information about recent activities on your farm?
+        </h1>
+        <p className='text-xs sm:text-sm md:text-base mb-10 text-center text-white'>
+          The information you provide will help us give you estimates for your farm.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm md:text-base">
           <div className="flex flex-col md:flex-row items-center ">
-            <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="activity">Activity</label>
+            <label className="w-full md:w-1/3 text-white font-normal mb-2 md:mb-0" htmlFor="activity">
+              Activity
+            </label>
             <select
               name="activity" 
               id="activity" 
               value={formData.activity} 
               onChange={handleChange} 
-              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl text-black" // Added text-black
+              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl text-black"
               required
             >
               <option value="">Select an activity</option>
@@ -93,43 +99,49 @@ function FarmDetailsForm() {
             </select>
           </div>
           <div className="flex flex-col md:flex-row items-center">
-            <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="county">Date</label>
+            <label className="w-full md:w-1/3 text-white font-normal mb-2 md:mb-0" htmlFor="county">
+              Date
+            </label>
             <input
               type="date" 
               name="date"
               id="date"
               value={formData.date}
               onChange={handleChange}
-              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl text-black" // Added text-black
+              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl text-black"
               required
             />
           </div>
           <div className="flex flex-col md:flex-row items-center">
-            <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="county">County</label>
+            <label className="w-full md:w-1/3 text-white font-normal mb-2 md:mb-0" htmlFor="county">
+              County
+            </label>
             <input
               type="text" 
               name="county"
               id="county"
               value={formData.county}
               onChange={handleChange}
-              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl text-black" // Added text-black
+              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl text-black"
               required
             />
           </div>
           <div className="flex flex-col md:flex-row items-center">
-            <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="fertilizer_type">Fertilizer type</label>
+            <label className="w-full md:w-1/3 text-white font-normal mb-2 md:mb-0" htmlFor="fertilizer_type">
+              Fertilizer type
+            </label>
             <input
               type="text"
               name="fertilizer_type" 
               id="fertilizer_type" 
               value={formData.fertilizer_type}
               onChange={handleChange}
-              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl text-black" // Added text-black
+              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl text-black"
               required
             />
           </div>
           <div className="flex flex-col md:flex-row items-center">
-            <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="irrigation_used">
+            <label className="w-full md:w-1/3 text-white font-normal mb-2 md:mb-0" htmlFor="irrigation_used">
               Irrigation used
             </label>
             <div className="w-full md:w-2/3 flex items-center">
@@ -160,14 +172,16 @@ function FarmDetailsForm() {
             </div>
           </div>
           <div className="flex flex-col md:flex-row items-center">
-            <label className="w-full md:w-1/3 text-white font-normal text-xs mb-2 md:mb-0" htmlFor="notes">Notes</label>
+            <label className="w-full md:w-1/3 text-white font-normal mb-2 md:mb-0" htmlFor="notes">
+              Notes
+            </label>
             <textarea
               type="text"
               name="notes"
               id="notes"
               value={formData.notes}
               onChange={handleChange}
-              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl text-xs text-black h-20" // Added text-black
+              className="w-full md:w-2/3 p-1 border border-gray-300 rounded-xl text-black h-20"
               required
             />
           </div>
