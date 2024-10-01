@@ -31,20 +31,19 @@ function Home() {
         <div className="container mx-auto flex flex-col md:flex-row items-center pt-16 md:pt-24 px-4 sm:px-8">
           <div className="flex flex-col w-full lg:w-1/2 justify-center items-start p-4">
             <h1 className="text-3xl md:text-5xl font-bold text-custom-green tracking-loose">
-              Lorem ipsum dolor
+              About us
             </h1>
-            <p className="text-sm md:text-base text-black mb-4 pt-4 md:pt-8">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
-              nostrum autem magnam cumque soluta unde corrupti obcaecati fuga.
-              Quod molestiae obcaecati veritatis? Corporis nostrum nihil
-              quibusdam delectus vero culpa similique?
+            <p className="text-sm md:text-base text-black mb-4 pt-4 md:pt-8 leading-loose space-y-8">
+            Farm Mall is revolutionizing the agricultural landscape by empowering farmers with intelligent technology 
+            and AI-driven solutions. We aim to equip farmers with actionable insights at every stage of their journey, 
+            boosting profitability, sustainability, and market competitiveness.
             </p>
-            <a
+            {/* <a
               href="#"
               className="bg-transparent hover:bg-custom-green text-black hover:text-white rounded-3xl shadow hover:shadow-lg py-1 px-2 border border-custom-green hover:border-transparent"
             >
               Lorem, ipsum.
-            </a>
+            </a> */}
           </div>
           <div className="p-4 mt-12 md:mt-0 lg:w-1/2 justify-center">
             <img
@@ -77,14 +76,15 @@ function Home() {
                       className="text-custom-green fill-current"
                     />
                   </svg>
-                  <h4 className="text-lg md:text-xl font-bold text-white">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <h4 className="text-sm md:text-lg font-bold text-white">
+                  By harnessing the power of AI and machine learning, Farm Mall will analyze vast datasets to:
                   </h4>
-                  <p className="text-xs md:text-sm font-light mt-2">
-                    explicabo omnis consequuntur fugiat voluptas labore
-                    accusantium, totam, nemo, aperiam natus facere in saepe
-                    repellat laborum. Qui, ducimus possimus.
-                  </p>
+                    <ul className="list-disc pl-4 text-xs md:text-sm font-light mt-2">
+                    <li>Forecast crop yields and identify potential risks.</li>
+                    <li>Optimize planting schedules based on market demand and weather patterns.</li>
+                    <li>Provide farmers with personalized recommendations tailored to their specific needs.</li>
+                    <li>Offer a secure and trusted platform with robust data protection protocols.</li>
+                    </ul>
                 </blockquote>
               </div>
             </div>
