@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard'
 import FarmDetailsForm from './components/FarmDetailsForm'
 import FarmManagement from './components/FarmManagement'
 import Projections from './components/Projections'
+import ActivityForm from './components/ActivityForm'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route path="/signup" element={<Signup/>}></Route>
       <Route path= "/dashboard" element={<Dashboard/>}></Route>
       <Route path="/farmdetailsform" element={<FarmDetailsForm/>}></Route>
+      <Route path= "/activityform" element= {<ActivityForm/>}></Route>
       <Route path="/farmmanagement" element = {<FarmManagement/>}></Route>
       <Route path="/projections" element= {<Projections/>}></Route>
     </Routes>

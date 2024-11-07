@@ -206,9 +206,9 @@ function FarmDetailsForm() {
               <button
                   key={activity}
                   onClick={() => selectActivity(activity.toLowerCase())}
-                  className=" rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-green-700 hover:bg-green-200 transition duration-300"
+                  className=" bg-custom-blue rounded-lg shadow-lg p-6 flex flex-col items-center justify-center text-green-700 hover:bg-green-200 transition duration-300"
               >
-                  <span className="text-xl font-semibold text-custom-orange">{activity}</span>
+                  <span className="text-xl font-semibold hover:text-custom-orange">{activity}</span>
               </button>
           ))}
       </div>
