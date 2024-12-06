@@ -34,13 +34,13 @@ function Dashboard() {
       projectedEvents = [
         {
           title: `${formData.cropName} - Weeding`,
-          start: plantingDate.clone().add(3, "weeks").toDate(),
-          end: plantingDate.clone().add(3, "weeks").toDate(),
+          start: plantingDate.clone().add(3, "weeks").toDate(), // Use .toDate() to convert to Date object
+          end: plantingDate.clone().add(3, "weeks").toDate(),   // Use .toDate() to convert to Date object
         },
         {
           title: `${formData.cropName} - Harvesting`,
-          start: plantingDate.clone().add(3, "months").toDate(),
-          end: plantingDate.clone().add(3, "months").toDate(),
+          start: plantingDate.clone().add(3, "months").toDate(), // Use .toDate() to convert to Date object
+          end: plantingDate.clone().add(3, "months").toDate(),   // Use .toDate() to convert to Date object
         },
       ];
     }
@@ -61,7 +61,7 @@ function Dashboard() {
     <div className="flex h-full">
       {/* Side Navigation */}
       <div
-        className={`w-64 bg-green-700 text-white flex flex-col p-4 top-0 fixed h-full z-10 transition-transform duration-300 ${
+        className={`w-64 bg-custom-green text-white flex flex-col p-4 top-0 fixed h-full z-10 transition-transform duration-300 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0`}
       >
