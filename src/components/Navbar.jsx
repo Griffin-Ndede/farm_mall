@@ -48,17 +48,17 @@ function Navbar() {
               Calculator
             </AnchorLink>
             <Link
-              to="/login"
+              to="/dashboard"
               className="px-4 py-1 text-sm  bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
             >
-              Login
+              Dashboard
             </Link>
-            <Link
+            {/* <Link
               to="/signup"
               className="px-4 py-1 text-sm  bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
             >
               Sign up
-            </Link>
+            </Link> */}
           </nav>
         </div>
       </div>
