@@ -195,7 +195,7 @@
 // }
 
 // export default FarmDetailsForm;
-import React from 'react'
+
 
 function FarmDetailsForm() {
   const activities = ['Planting', 'Fertilizing', 'Weeding', 'Harvesting'];

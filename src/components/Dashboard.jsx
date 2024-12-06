@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import FarmDetailsForm from './FarmDetailsForm';
 import DashboardNav from './DashboardNav';
 import FarmManagement from './FarmManagement';

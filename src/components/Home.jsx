@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-
 
 function Home() {
   const [plantingDate, setPlantingDate] = useState("");
@@ -27,38 +26,104 @@ function Home() {
   return (
     <>
       <Navbar />
-      <section className="h-screen bg-gray-200">
-        <div className="container mx-auto flex flex-col md:flex-row items-center pt-16 md:pt-24 px-4 sm:px-8">
-          <div className="flex flex-col w-full lg:w-1/2 justify-center items-start p-4">
-            <h1 className="text-3xl md:text-5xl font-bold text-custom-green tracking-loose">
-              About us
+      <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold sm:text-4xl mb-10 text-custom-green">
+              Smart Farming Management System
             </h1>
-            <p className="text-sm md:text-base text-black mb-4 pt-4 md:pt-8 leading-loose space-y-8">
-            Farm Mall is revolutionizing the agricultural landscape by empowering farmers with intelligent technology 
-            and AI-driven solutions. We aim to equip farmers with actionable insights at every stage of their journey, 
-            boosting profitability, sustainability, and market competitiveness.
+            <p className="text-xl max-w-xl mx-auto mb-10">
+              Optimize your farm's productivity with our comprehensive management solution.
+              Track inputs, monitor schedules, and maximize your harvest potential.
             </p>
-            {/* <a
-              href="#"
-              className="bg-transparent hover:bg-custom-green text-black hover:text-white rounded-3xl shadow hover:shadow-lg py-1 px-2 border border-custom-green hover:border-transparent"
+            <a
+              href="/login"
+              className="inline-block bg-custom-green text-white px-6 py-2 rounded-3xl text-lg"
             >
-              Lorem, ipsum.
-            </a> */}
+              Get Started
+            </a>
           </div>
-          <div className="p-4 mt-12 md:mt-0 lg:w-1/2 justify-center">
-            <img
-              src="https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/23-03-2022_WHO_Kenya-3.jpg/image1170x530cropped.jpg"
-              alt="farmer"
-              className="h-64 md:h-96 object-cover rounded-3xl w-full"
-            />
+
+          {/* Feature Cards Section */}
+          <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex flex-col items-center p-6 shadow-2xl rounded-3xl">
+              <div className="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full mb-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-8 h-8 text-green-600"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8 16l-4-4m0 0l4-4m-4 4h16"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Input Scheduling</h3>
+              <p className="text-gray-600 text-center">
+                Track and plan your farm inputs with an intelligent calendar system.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center p-6 shadow-2xl rounded-3xl">
+              <div className="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full mb-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-8 h-8 text-green-600"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 3v18m9-9H3"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Crop Management</h3>
+              <p className="text-gray-600 text-center">
+                Monitor crop cycles from planting to harvest with precise timing.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center  p-6 shadow-2xl rounded-3xl">
+              <div className="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full mb-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-8 h-8 text-green-600"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 3h18v18H3V3z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Performance Analytics</h3>
+              <p className="text-gray-600 text-center">
+                Analyze farm performance and optimize your agricultural practices.
+              </p>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Calculator Section */}
       <section className="relative pt-16 h-full md:h-screen">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-center gap-10">
             <div className="w-full md:w-6/12 lg:w-4/12 px-4">
-              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl bg-custom-green">
+              <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-xl bg-custom-green">
                 <img
                   alt="farmer"
                   src="https://oneacrefund.org/sites/default/files/styles/short_banner_desktop/public/2022-10/ARK-OAF-Serabo-106.jpg?h=748d7e9c&itok=MS_QVqIn"
@@ -77,19 +142,22 @@ function Home() {
                     />
                   </svg>
                   <h4 className="text-sm md:text-lg font-bold text-white">
-                  By harnessing the power of AI and machine learning, Farm Mall will analyze vast datasets to:
+                    By harnessing the power of AI and machine learning, Farm Mall will analyze vast datasets to:
                   </h4>
-                    <ul className="list-disc pl-4 text-xs md:text-sm font-light mt-2">
+                  <ul className="list-disc pl-4 text-xs md:text-sm font-light mt-2">
                     <li>Forecast crop yields and identify potential risks.</li>
                     <li>Optimize planting schedules based on market demand and weather patterns.</li>
                     <li>Provide farmers with personalized recommendations tailored to their specific needs.</li>
                     <li>Offer a secure and trusted platform with robust data protection protocols.</li>
-                    </ul>
+                  </ul>
                 </blockquote>
               </div>
             </div>
-            <div className="w-full   md:w-6/12 px-4">
-              <h1 id="calculator"className="text-2xl md:text-4xl font-bold text-custom-green mb-6 text-center">
+            <div className="w-full md:w-6/12 px-4">
+              <h1
+                id="calculator"
+                className="text-2xl md:text-4xl font-bold text-custom-green mb-6 text-center"
+              >
                 Calculator
               </h1>
               <div className="flex flex-col space-y-6">
@@ -112,9 +180,7 @@ function Home() {
                   <div className="mt-4">
                     <p className="text-md font-semibold text-gray-700">
                       Expected Harvest Date:{" "}
-                      <span className="text-custom-green">
-                        {calculatedDate}
-                      </span>
+                      <span className="text-custom-green">{calculatedDate}</span>
                     </p>
                   </div>
                 )}
@@ -130,7 +196,7 @@ function Home() {
                     type="number"
                     name="acres"
                     id="acres"
-                    className="block w-2/3 rounded-xl  py-2 px-4  shadow-xl"
+                    className="block w-2/3 rounded-xl py-2 px-4 shadow-xl"
                     onChange={handleCostCalculation}
                   />
                 </div>
@@ -155,4 +221,3 @@ function Home() {
 }
 
 export default Home;
-
