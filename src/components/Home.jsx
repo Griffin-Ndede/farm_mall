@@ -2,10 +2,11 @@ import { useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
+
 function Home() {
-  const [plantingDate, setPlantingDate] = useState("");
+  const [, setPlantingDate] = useState("");
   const [calculatedDate, setCalculatedDate] = useState("");
-  const [acres, setAcres] = useState(0);
+  const [, setAcres] = useState(0);
   const [estimatedCost, setEstimatedCost] = useState(0);
 
   function handleDuration(event) {
@@ -26,14 +27,14 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100">
+      <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 mt-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center">
             <h1 className="text-4xl font-bold sm:text-4xl mb-10 text-custom-green">
               Smart Farming Management System
             </h1>
             <p className="text-xl max-w-xl mx-auto mb-10">
-              Optimize your farm's productivity with our comprehensive management solution.
+              Optimize your farm&apos;s productivity with our comprehensive management solution.
               Track inputs, monitor schedules, and maximize your harvest potential.
             </p>
             <a
@@ -54,7 +55,7 @@ function Home() {
                   viewBox="0 0 24 24"
                   strokeWidth={2}
                   stroke="currentColor"
-                  className="w-8 h-8 text-green-600"
+                  className="w-8 h-8 text-custom-green"
                 >
                   <path
                     strokeLinecap="round"
@@ -77,7 +78,7 @@ function Home() {
                   viewBox="0 0 24 24"
                   strokeWidth={2}
                   stroke="currentColor"
-                  className="w-8 h-8 text-green-600"
+                  className="w-8 h-8 text-custom-green"
                 >
                   <path
                     strokeLinecap="round"
@@ -100,7 +101,7 @@ function Home() {
                   viewBox="0 0 24 24"
                   strokeWidth={2}
                   stroke="currentColor"
-                  className="w-8 h-8 text-green-600"
+                  className="w-8 h-8 text-custom-green"
                 >
                   <path
                     strokeLinecap="round"
