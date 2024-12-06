@@ -33,7 +33,7 @@ function Home() {
             <h1 className="text-4xl font-bold sm:text-4xl mb-10 text-custom-green">
               Smart Farming Management System
             </h1>
-            <p className="text-xl max-w-xl mx-auto mb-10">
+            <p className="text-xl font-light max-w-3xl mx-auto mb-10">
               Optimize your farm&apos;s productivity with our comprehensive management solution.
               Track inputs, monitor schedules, and maximize your harvest potential.
             </p>
