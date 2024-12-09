@@ -6,8 +6,8 @@ function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="antialiased">
-      <div className="w-full text-black bg-custom-green shadow-2xl top-0 fixed">
+    <div className="antialiased rounded-full flex justify-center">
+      <div className="w-5/6 mx-auto rounded-full text-black bg-custom-green shadow-2xl mt-10 fixed">
         <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
           <div className="flex flex-row items-center justify-between p-4">
             <a className="text-3xl font-bold text-white rounded-3xl focus:outline-none focus:shadow-outline">
@@ -36,29 +36,29 @@ function Navbar() {
           </div>
           <nav className={`flex-col flex-grow ${open ? 'flex' : 'hidden'} pb-4 md:pb-0 md:flex md:justify-end md:flex-row`}>
             <a
-              className="px-4 py-1 text-sm  bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+              className="px-3 py-2 text-sm  bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
               href="#"
             >
               About
             </a>
             <AnchorLink
-              className="px-4 py-1 text-sm  bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+              className="px-3 py-2 text-sm  bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
               href="#calculator"
             >
               Calculator
             </AnchorLink>
             <Link
               to="/dashboard"
-              className="px-4 py-1 text-sm  bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+              className="px-3 py-2 text-sm  bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
             >
               Dashboard
             </Link>
-            {/* <Link
+            <Link
               to="/signup"
-              className="px-4 py-1 text-sm  bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+              className="px-3 py-2 items-center text-sm  bg-transparent text-custom-green bg-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
             >
-              Sign up
-            </Link> */}
+              Get started
+            </Link>
           </nav>
         </div>
       </div>

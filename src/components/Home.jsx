@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { FaCalendarCheck, FaChartLine, FaClipboardList, FaFontAwesome } from "react-icons/fa";
+import { FaListCheck } from "react-icons/fa6";
 
 
 function Home() {
@@ -27,7 +29,7 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 mt-10">
+      <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center">
             <h1 className="text-4xl font-bold sm:text-4xl mb-10 text-custom-green">
@@ -47,46 +49,17 @@ function Home() {
 
           {/* Feature Cards Section */}
           <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center p-6 shadow-2xl rounded-3xl">
-              <div className="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full mb-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-8 h-8 text-custom-green"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M8 16l-4-4m0 0l4-4m-4 4h16"
-                  />
-                </svg>
-              </div>
+          <div className="flex flex-col items-center p-6 shadow-2xl rounded-3xl">
+              <FaCalendarCheck className="text-4xl text-custom-green mb-4" />
               <h3 className="text-lg font-semibold text-gray-800 mb-2">Input Scheduling</h3>
               <p className="text-gray-600 text-center">
                 Track and plan your farm inputs with an intelligent calendar system.
               </p>
-            </div>
+          </div>
+
 
             <div className="flex flex-col items-center p-6 shadow-2xl rounded-3xl">
-              <div className="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full mb-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-8 h-8 text-custom-green"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 3v18m9-9H3"
-                  />
-                </svg>
-              </div>
+              <FaListCheck className="text-4xl text-custom-green mb-4"/>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">Crop Management</h3>
               <p className="text-gray-600 text-center">
                 Monitor crop cycles from planting to harvest with precise timing.
@@ -94,22 +67,7 @@ function Home() {
             </div>
 
             <div className="flex flex-col items-center  p-6 shadow-2xl rounded-3xl">
-              <div className="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full mb-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-8 h-8 text-custom-green"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 3h18v18H3V3z"
-                  />
-                </svg>
-              </div>
+            <FaChartLine className="text-4xl text-custom-green mb-4"/>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">Performance Analytics</h3>
               <p className="text-gray-600 text-center">
                 Analyze farm performance and optimize your agricultural practices.
@@ -120,11 +78,11 @@ function Home() {
       </div>
 
       {/* Calculator Section */}
-      <section className="relative pt-16 h-full md:h-screen">
+      <section className=" pt-16 h-full md:h-screen">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-center gap-10">
             <div className="w-full md:w-6/12 lg:w-4/12 px-4">
-              <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-xl bg-custom-green">
+              <div className="flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-xl bg-custom-green">
                 <img
                   alt="farmer"
                   src="https://oneacrefund.org/sites/default/files/styles/short_banner_desktop/public/2022-10/ARK-OAF-Serabo-106.jpg?h=748d7e9c&itok=MS_QVqIn"
@@ -145,11 +103,11 @@ function Home() {
                   <h4 className="text-sm md:text-lg font-bold text-white">
                     By harnessing the power of AI and machine learning, Farm Mall will analyze vast datasets to:
                   </h4>
-                  <ul className="list-disc pl-4 text-xs md:text-sm font-light mt-2">
-                    <li>Forecast crop yields and identify potential risks.</li>
-                    <li>Optimize planting schedules based on market demand and weather patterns.</li>
-                    <li>Provide farmers with personalized recommendations tailored to their specific needs.</li>
-                    <li>Offer a secure and trusted platform with robust data protection protocols.</li>
+                  <ul className="list-disc pl-4 text-xs md:text-sm font-light mt-2 text-white">
+                  <li className="leading-8">Forecast crop yields and identify risks.</li>
+                  <li className="leading-8">Optimize planting schedules based on market and weather conditions.</li>
+                  <li className="leading-8">Provide personalized farming recommendations.</li>
+                  <li className="leading-8">Ensure secure data protection.</li>
                   </ul>
                 </blockquote>
               </div>
