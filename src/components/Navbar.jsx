@@ -36,26 +36,26 @@ function Navbar() {
           </div>
           <nav className={`flex-col flex-grow ${open ? 'flex' : 'hidden'} pb-4 md:pb-0 md:flex md:justify-end md:flex-row`}>
             <a
-              className="px-3 py-2 text-sm  bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+              className="px-3 py-2 text-sm bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
               href="#"
             >
               About
             </a>
             <AnchorLink
-              className="px-3 py-2 text-sm  bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+              className="px-3 py-2 text-sm bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
               href="#calculator"
             >
               Calculator
             </AnchorLink>
             <Link
               to="/dashboard"
-              className="px-3 py-2 text-sm  bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+              className="px-3 py-2 text-sm bg-transparent text-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
             >
               Dashboard
             </Link>
             <Link
               to="/signup"
-              className="px-3 py-2 items-center text-sm  bg-transparent text-custom-green bg-white rounded-3xl hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+              className="px-3 py-2 mx-2 items-center text-sm  bg-transparent text-custom-green bg-white rounded-3xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
             >
               Get started
             </Link>

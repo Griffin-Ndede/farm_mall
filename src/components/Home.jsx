@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { FaCalendarCheck, FaChartLine, FaClipboardList, FaFontAwesome } from "react-icons/fa";
+import { FaCalendarCheck, FaChartLine } from "react-icons/fa";
 import { FaListCheck } from "react-icons/fa6";
 
 
@@ -29,7 +29,7 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 mt-20">
+      <div id="home"className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center">
             <h1 className="text-4xl font-bold sm:text-4xl mb-10 text-custom-green">
