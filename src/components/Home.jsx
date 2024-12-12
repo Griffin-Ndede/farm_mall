@@ -29,7 +29,7 @@ function Home() {
   return (
     <>
       <Navbar />
-      <section id="home" className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 mt-20">
+<section id="home" className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 mt-20">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
     <div className="text-center">
       <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl mb-6 text-custom-green">
@@ -90,7 +90,7 @@ function Home() {
             src="https://oneacrefund.org/sites/default/files/styles/short_banner_desktop/public/2022-10/ARK-OAF-Serabo-106.jpg?h=748d7e9c&itok=MS_QVqIn"
             className="w-full object-cover h-48 sm:h-56 md:h-64 align-middle rounded-t-lg"
           />
-          <blockquote className="relative p-4 sm:p-6 md:p-8 rounded-b-xl bg-custom-green">
+          <blockquote className=" p-4 sm:p-6 md:p-8 rounded-b-xl bg-custom-green">
             <svg
               preserveAspectRatio="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -177,11 +177,11 @@ function Home() {
   </div>
 </section>
 <section className="h-full">
-  <div className="w-full bg-gray-100 py-12 md:py-24 text-gray-800">
+  <div className="w-full bg-gray-100 py-12 md:py-24">
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center max-w-6xl mx-auto mb-12">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-5 text-custom-green">
-          What people are saying.
+          What farmers are saying.
         </h1>
         <h3 className="text-lg sm:text-xl font-light mb-5">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -200,10 +200,10 @@ function Home() {
                   <h6 className="font-bold text-sm uppercase text-gray-600">User {index + 1}</h6>
                 </div>
               </div>
-              <p className="text-sm leading-tight">
-                <span className="text-lg leading-none italic font-bold text-gray-400 mr-1">"</span>
+              <p className="text-sm">
+                <span className="text-xl leading-none italic font-bold text-custom-green mr-2">&quot;</span>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos sunt ratione dolor exercitationem minima quas.
-                <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">"</span>
+                <span className="text-xl leading-none italic font-bold text-custom-green">&quot;</span>
               </p>
             </div>
           </div>
@@ -211,13 +211,24 @@ function Home() {
       </div>
     </div>
   </div>
-  <div className="bg-gray-50 py-10">
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-600 text-center">
-        This is going to be the div that displays the contact details and partnerships
-      </h1>
+  <div className="bg-gray-100 py-10">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-600 text-center mb-8">
+      Partnerships
+    </h1>
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center">
+      {[...Array(6)].map((_, index) => (
+        <img
+          key={index}
+          src="https://media.istockphoto.com/id/1142275340/vector/farm-simple-icon-farm-animal-sign-green-symbol-for-animal-husbandry.jpg?s=612x612&w=0&k=20&c=FI0a8aVYfS0vxkDE06FQK-HlHSbyBXGQy3vNfPfveOg="
+          alt={`Partner ${index + 1}`}
+          className="w-full h-auto object-cover"
+        />
+      ))}
     </div>
   </div>
+</div>
+
 </section>
 
 <Footer />
