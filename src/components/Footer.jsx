@@ -10,12 +10,12 @@ function Footer() {
                 <div className="flex flex-wrap justify-center -mx-5 -my-2">
                     <div className="px-5 py-2">
                         <AnchorLink href="#home" className="text-base leading-6  hover:text-custom-green">
-                            About
+                            Contact us
                         </AnchorLink>
                     </div>
                     <div className="px-5 py-2">
                         <AnchorLink href="#calculator" className="text-base leading-6  hover:text-custom-green">
-                            Calculator
+                            Privacy policy
                         </AnchorLink>
                     </div>
                     {/* <div className="px-5 py-2">
