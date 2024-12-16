@@ -7,7 +7,9 @@ function Navbar() {
 
   return (
     <div className="antialiased rounded-full flex justify-center">
-      <div className="w-5/6 mx-auto rounded-full text-black bg-custom-green shadow-2xl mt-10 fixed">
+      <div className={`w-5/6 mx-auto text-black bg-custom-green shadow-2xl mt-10 fixed ${
+          open ? '' : 'rounded-full'
+        }`}>
         <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
           <div className="flex flex-row items-center justify-between p-4">
             <a className="text-3xl font-bold text-white rounded-3xl focus:outline-none focus:shadow-outline">
