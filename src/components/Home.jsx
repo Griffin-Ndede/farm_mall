@@ -29,55 +29,54 @@ function Home() {
   return (
     <>
       <Navbar />
-<section id="home" className="min-h-screen bg-gradient-to-b from-green-50 to-green-100 mt-20">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-    <div className="text-center">
-      <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl mb-6 text-custom-green">
-        Empowering Farmers with Insights and Tools for Success
-      </h1>
-      <p className="text-lg sm:text-xl lg:text-2xl font-light max-w-3xl mx-auto mb-8">
-        Optimize your farm&apos;s productivity with our comprehensive management solution.
-        Track inputs, monitor schedules, and maximize your harvest potential.
-      </p>
+      <section id="home" className="h-screen flex flex-col justify-center items-center">
+  <div className="container mx-auto px-4 text-center">
+    <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-custom-green leading-tight">
+      Welcome to Farm Mall
+    </h1>
+    <p className="text-base sm:text-lg md:text-xl text-gray-600 mt-4">
+      Empowering farmers with smart tools to plan, monitor, and optimize their agricultural practices.
+    </p>
+    <div className="mt-8">
       <a
-        href="/login"
-        className="inline-block bg-custom-green text-white px-8 py-3 rounded-3xl text-lg sm:text-xl hover:bg-green-700 transition duration-300"
+        href="#calculator"
+        className="px-6 py-3 bg-custom-green text-white text-lg sm:text-xl font-medium rounded-full shadow-lg hover:bg-green-700 transition-all"
       >
-        Get Started
+        Try the Calculator
       </a>
     </div>
-
-    {/* Feature Cards Section */}
-    <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {/* Card 1 */}
-      <div className="flex flex-col items-center p-6 shadow-2xl rounded-3xl bg-white">
-        <FaCalendarCheck className="text-4xl text-custom-green mb-4" />
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">Input Scheduling</h3>
-        <p className="text-gray-600 text-center">
-          Track and plan your farm inputs with an intelligent calendar system.
-        </p>
+  </div>
+  {/* Feature Cards */}
+  <div className="mt-10 w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+    {[
+      {
+        icon: <FaCalendarCheck className="text-4xl text-custom-green mb-4" />,
+        title: "Input Scheduling",
+        description: "Track and plan your farm inputs with an intelligent calendar system.",
+      },
+      {
+        icon: <FaChartLine className="text-4xl text-custom-green mb-4" />,
+        title: "Performance Analytics",
+        description: "Analyze farm performance and optimize your agricultural practices.",
+      },
+      {
+        icon: <FaListCheck className="text-4xl text-custom-green mb-4" />,
+        title: "Crop Management",
+        description: "Monitor crop cycles from planting to harvest with precise timing.",
+      },
+    ].map((feature, index) => (
+      <div
+        key={index}
+        className="flex flex-col items-center p-6 shadow-2xl rounded-3xl bg-white h-full"
+      >
+        {feature.icon}
+        <h3 className="text-lg font-semibold text-gray-800 mb-2">{feature.title}</h3>
+        <p className="text-gray-600 text-center">{feature.description}</p>
       </div>
-
-      {/* Card 2 */}
-      <div className="flex flex-col items-center p-6 shadow-2xl rounded-3xl bg-white">
-        <FaChartLine className="text-4xl text-custom-green mb-4" />
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">Performance Analytics</h3>
-        <p className="text-gray-600 text-center">
-          Analyze farm performance and optimize your agricultural practices.
-        </p>
-      </div>
-
-      {/* Card 3 */}
-      <div className="flex flex-col items-center p-6 shadow-2xl rounded-3xl bg-white">
-        <FaListCheck className="text-4xl text-custom-green mb-4" />
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">Crop Management</h3>
-        <p className="text-gray-600 text-center">
-          Monitor crop cycles from planting to harvest with precise timing.
-        </p>
-      </div>
-    </div>
+    ))}
   </div>
 </section>
+
 {/* Calculator Section */}
 <section className="pt-16 h-full md:h-screen">
   <div className="container mx-auto px-4">
@@ -228,9 +227,7 @@ function Home() {
     </div>
   </div>
 </div>
-
 </section>
-
 <Footer />
 
     </>
