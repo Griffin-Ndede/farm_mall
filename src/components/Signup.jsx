@@ -26,7 +26,7 @@ function Signup() {
     e.preventDefault();
   
     try {
-      const response = await axios.post('https://farmmall-backend.onrender.com/register/', {
+      const response = await axios.post('https://api.farmmall.co.ke/register/', {
         username: formData.username,
         first_name: formData.firstName,
         last_name: formData.lastName,
@@ -36,7 +36,8 @@ function Signup() {
       });
   
       if (response.status === 201) {
-        navigate('/login');
+        // navigate('/login');
+        alert("Registration successfull")
       }
     } catch (error) {
       // Log the full error response for debugging
