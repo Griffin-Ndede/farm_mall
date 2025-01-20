@@ -36,7 +36,7 @@ function Signup() {
       });
   
       if (response.status === 201) {
-        // navigate('/login');
+        navigate('/login');
         alert("Registration successfull")
       }
     } catch (error) {

@@ -6,7 +6,7 @@ import { FaListCheck } from "react-icons/fa6";
 
 
 function Home() {
-  const [, setPlantingDate] = useState("");
+  const [plantingDate, setPlantingDate] = useState("");
   const [calculatedDate, setCalculatedDate] = useState("");
   const [, setAcres] = useState(0);
   const [estimatedCost, setEstimatedCost] = useState(0);
