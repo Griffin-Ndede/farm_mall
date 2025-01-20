@@ -1,6 +1,7 @@
 import  { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -37,11 +38,12 @@ function Signup() {
   
       if (response.status === 201) {
         navigate('/login');
-        alert("Registration successfull")
+        successAlert()
       }
     } catch (error) {
       // Log the full error response for debugging
       console.error('Registration error:', error.response.data);
+      failureAlert();
       
       // Provide a more informative error message
       if (error.response && error.response.data) {
@@ -56,7 +58,25 @@ function Signup() {
       }
     }
   };
-  
+   // function to show success alert prompt
+   const successAlert = () => {
+    Swal.fire({
+      title: 'Success',
+      text: 'Registration successful',
+      icon: 'success',
+      confirmButtonText: 'OK',
+    })
+  };
+
+  // function to show failure alert prompt
+  const failureAlert = (message) => {
+    Swal.fire({
+      title: 'Error',
+      text: message,
+      icon: 'error',
+      confirmButtonText: 'OK',
+    });
+  };
 
   return (
     <div className="flex h-screen w-full items-center justify-center">
