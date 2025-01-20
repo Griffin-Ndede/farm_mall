@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -30,11 +32,12 @@ function Login() {
       if (response.status === 200) {
         // Store token in local storage or state management solution
         localStorage.setItem('token', response.data.token);
-        alert('Login successful');
+        successAlert();
         navigate('/dashboard'); // Redirect to dashboard or another page
       }
     } catch (error) {
       console.error('Login error:', error.response?.data || error);
+      failureAlert()
 
       if (error.response && error.response.data) {
         setError(error.response.data.non_field_errors?.[0] || 'Invalid username or password.');
@@ -44,6 +47,25 @@ function Login() {
     }
   };
 
+   // function to show success alert prompt
+   const successAlert = () => {
+    Swal.fire({
+      title: 'Success',
+      text: 'Login successful',
+      icon: 'success',
+      confirmButtonText: 'OK',
+    })
+  };
+
+  // function to show failure alert prompt
+  const failureAlert = (message) => {
+    Swal.fire({
+      title: 'Error',
+      text: message,
+      icon: 'error',
+      confirmButtonText: 'OK',
+    });
+  };
   return (
     <div className="flex h-screen w-full items-center justify-center">
       <div className="rounded-xl bg-black w-full max-w-md lg:w-1/3 bg-opacity-25 px-8 sm:px-12 lg:px-16 py-10 shadow-lg backdrop-blur-md">
