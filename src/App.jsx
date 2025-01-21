@@ -1,9 +1,8 @@
-import Home from './components/Home'
-import Dashboard from './components/Dashboard'
+import Home from './Pages/Home'
+import Dashboard from './Pages/Dashboard'
 import { BrowserRouter, Route , Routes} from 'react-router-dom'
-import Signup from './components/Signup'
-import Login from './components/Login'
-
+import Signup from './Pages/Signup'
+import Login from './Pages/Login'
 
 
 function App() {

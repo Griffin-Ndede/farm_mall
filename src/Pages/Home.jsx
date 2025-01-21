@@ -3,6 +3,8 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { FaSeedling, FaCalendarAlt, FaHome, FaBars } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 // Calendar Localizer
 const localizer = momentLocalizer(moment);
@@ -20,35 +22,30 @@ function Dashboard() {
     e.preventDefault();
     const activityDate = new Date(formData.activityDate);
 
-    // Add the main event to the calendar
     const newEvent = {
       title: `${formData.cropName} - ${formData.activity}`,
       start: activityDate,
       end: activityDate,
     };
 
-    // If the activity is planting, add weeding and harvesting projections
     let projectedEvents = [];
     if (formData.activity.toLowerCase() === "planting") {
       const plantingDate = moment(formData.activityDate);
       projectedEvents = [
         {
           title: `${formData.cropName} - Weeding`,
-          start: plantingDate.clone().add(3, "weeks").toDate(), // Use .toDate() to convert to Date object
-          end: plantingDate.clone().add(3, "weeks").toDate(),   // Use .toDate() to convert to Date object
+          start: plantingDate.clone().add(3, "weeks").toDate(),
+          end: plantingDate.clone().add(3, "weeks").toDate(),
         },
         {
           title: `${formData.cropName} - Harvesting`,
-          start: plantingDate.clone().add(3, "months").toDate(), // Use .toDate() to convert to Date object
-          end: plantingDate.clone().add(3, "months").toDate(),   // Use .toDate() to convert to Date object
+          start: plantingDate.clone().add(3, "months").toDate(),
+          end: plantingDate.clone().add(3, "months").toDate(),
         },
       ];
     }
 
-    // Update events in the calendar
     setEvents([...events, newEvent, ...projectedEvents]);
-
-    // Clear the form
     setFormData({ cropName: "", activity: "", activityDate: "" });
   };
 
@@ -66,27 +63,33 @@ function Dashboard() {
         } md:translate-x-0`}
       >
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Farm Dashboard</h1>
+          <h1 className="text-lg font-bold md:text-2xl">Farm Dashboard</h1>
           <button
             className="md:hidden text-white"
             onClick={() => setIsSidebarOpen(false)}
           >
-            Close
+            X
           </button>
         </div>
         <nav className="space-y-4">
+          <Link to='/'>
           <button className="flex items-center space-x-2 px-4 py-2 rounded hover:bg-green-800">
             <FaHome />
             <span>Home</span>
           </button>
+          </Link>
+          <AnchorLink href="#add-activity">
+          <button className="flex items-center space-x-2 px-4 py-2 rounded hover:bg-green-800">
+            <FaSeedling />
+            <span>Add Activity</span>
+          </button>
+          </AnchorLink>
+          <AnchorLink href="#calendar">
           <button className="flex items-center space-x-2 px-4 py-2 rounded hover:bg-green-800">
             <FaCalendarAlt />
             <span>Calendar</span>
           </button>
-          <button className="flex items-center space-x-2 px-4 py-2 rounded hover:bg-green-800">
-            <FaSeedling />
-            <span>Crop Tracking</span>
-          </button>
+          </AnchorLink>
         </nav>
       </div>
 
@@ -99,11 +102,9 @@ function Dashboard() {
           <FaBars size={24} />
         </button>
 
-        <h2 className="text-3xl font-bold mb-6">Crop Production Tracker</h2>
-        <div className="grid grid-cols-1 gap-8">
-          {/* Form */}
-          <div className="rounded-lg shadow p-6">
-            <h3 className="text-xl font-bold mb-4">Add Crop Activity</h3>
+        <section id="add-activity" className="h-screen">
+          <h2 className="text-3xl font-bold mb-6">Add Crop Activity</h2>
+          <div className="rounded-lg shadow p-6 bg-white">
             <form onSubmit={handleFormSubmit} className="space-y-4">
               <div>
                 <label className="block text-gray-700 font-medium">Crop Name</label>
@@ -148,19 +149,20 @@ function Dashboard() {
               </button>
             </form>
           </div>
+        </section>
 
-          {/* Calendar */}
+        <section id="calendar" className="min-h-screen">
+          <h2 className="text-3xl font-bold mb-6">Calendar</h2>
           <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-xl font-bold mb-4">Calendar</h3>
             <Calendar
               localizer={localizer}
               events={events}
               startAccessor="start"
               endAccessor="end"
-              style={{ height: 400 }}
+              style={{ height: 500 }}
             />
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );
