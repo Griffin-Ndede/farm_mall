@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { FaSeedling, FaCalendarAlt, FaHome, FaBars } from "react-icons/fa";
+import { FaSeedling, FaCalendarAlt, FaHome, FaBars, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
@@ -63,9 +63,8 @@ function Dashboard() {
     <div className="flex h-full">
       {/* Side Navigation */}
       <div
-        className={`w-64 bg-custom-green text-white flex flex-col p-4 top-0 fixed h-full z-10 transition-transform duration-300 ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0`}
+        className={`w-64 bg-custom-green text-white flex flex-col p-4 top-0 fixed h-full z-10 transition-transform duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          } md:translate-x-0`}
       >
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-lg font-bold md:text-2xl">Farm Dashboard</h1>
@@ -76,24 +75,34 @@ function Dashboard() {
             X
           </button>
         </div>
-        <nav className="space-y-4">
-          <Link to='/'>
-          <button className="flex items-center space-x-2 px-4 py-2 rounded hover:bg-green-800">
-            <FaHome />
-            <span>Home</span>
-          </button>
+        <nav className="space-y-4   p-4">
+          <Link to="/" className="group flex items-center space-x-4 px-4 py-2 rounded-md hover:bg-green-100 transition duration-200">
+            <FaHome className="text-green-600 group-hover:text-green-800" />
+            <span className="text-white  group-hover:text-green-800">Home</span>
           </Link>
-          <AnchorLink href="#calendar">
-          <button className="flex items-center space-x-2 px-4 py-2 rounded hover:bg-green-800">
-            <FaCalendarAlt />
-            <span>Calendar</span>
+
+          <AnchorLink href="#activity">
+          <button className="group flex items-center space-x-4 px-4 py-2 rounded-md hover:bg-green-100 transition duration-200">
+            <FaSeedling className="text-green-600 group-hover:text-green-800" />
+            <span className="text-white  group-hover:text-green-800">Add Activity</span>
           </button>
           </AnchorLink>
-          <button className="flex items-center space-x-2 px-4 py-2 rounded hover:bg-green-800">
-            <FaSeedling />
-            <span>Crop Tracking</span>
+          <AnchorLink
+            href="#calendar"
+            className="group flex items-center space-x-4 px-4 py-2 rounded-md hover:bg-green-100 transition duration-200"
+          >
+            <FaCalendarAlt className="text-green-600 group-hover:text-green-800" />
+            <span className="text-white  group-hover:text-green-800">Calendar</span>
+          </AnchorLink>
+
+
+
+          <button className="group flex items-center space-x-4 px-4 py-2 rounded-md hover:bg-green-100 transition duration-200">
+            <FaUser className="text-green-600 group-hover:text-green-800" />
+            <span className="text-white  group-hover:text-green-800">User Profile</span>
           </button>
         </nav>
+
       </div>
 
       {/* Main Content */}
@@ -108,11 +117,11 @@ function Dashboard() {
         <h2 className="text-3xl font-bold mb-6">Crop Production Tracker</h2>
         <div className="grid grid-cols-1 gap-8">
           {/* Form */}
-          <div className="rounded-lg shadow p-6">
+          <div className="rounded-lg h-screen shadow p-6" id="activity">
             <h3 className="text-xl font-bold mb-4">Add Crop Activity</h3>
-            <form onSubmit={handleFormSubmit} className="space-y-4">
+            <form onSubmit={handleFormSubmit} className="space-y-6">
               <div>
-                <label className="block text-gray-700 font-medium">Crop Name</label>
+                <label className="block text-gray-700 ">Crop Name</label>
                 <input
                   type="text"
                   name="cropName"
@@ -124,7 +133,7 @@ function Dashboard() {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium">Activity</label>
+                <label className="block text-gray-700 ">Activity</label>
                 <input
                   type="text"
                   name="activity"
@@ -136,7 +145,7 @@ function Dashboard() {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium">Date</label>
+                <label className="block text-gray-700 ">Date</label>
                 <input
                   type="date"
                   name="activityDate"
@@ -146,7 +155,7 @@ function Dashboard() {
                   required
                 />
               </div>
-              
+
               <button
                 type="submit"
                 className="py-2 px-4 rounded-3xl mx-auto flex justify-center text-white bg-custom-green"
