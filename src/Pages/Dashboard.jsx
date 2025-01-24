@@ -86,13 +86,10 @@ function Dashboard() {
           <AnchorLink href="#calendar">
           <button className="flex items-center space-x-2 px-4 py-2 rounded hover:bg-green-800">
             <FaCalendarAlt />
-            <span>Crop tracking</span>
+            <span>Calendar</span>
           </button>
           </AnchorLink>
           <button className="flex items-center space-x-2 px-4 py-2 rounded hover:bg-green-800">
-            <FaSeedling />
-            <span>Crop Tracking</span>
-          </button>   <button className="flex items-center space-x-2 px-4 py-2 rounded hover:bg-green-800">
             <FaSeedling />
             <span>Crop Tracking</span>
           </button>
@@ -149,6 +146,7 @@ function Dashboard() {
                   required
                 />
               </div>
+              
               <button
                 type="submit"
                 className="py-2 px-4 rounded-3xl mx-auto flex justify-center text-white bg-custom-green"
