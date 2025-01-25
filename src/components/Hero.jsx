@@ -2,7 +2,7 @@ import { Sprout } from 'lucide-react';
 
 function Hero() {
   return (
-    <div className="hidden lg:block lg:w-full relative">
+    <div className="hidden lg:block lg:w-1/2 relative">
       <img
         src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80"
         alt="Agricultural field"

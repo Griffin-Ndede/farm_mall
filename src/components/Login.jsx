@@ -46,8 +46,7 @@ function Login() {
   return (
     <div className='flex h-screen justify-flex-col lg:flex-row'>
       <Hero/>
-        {/* <div className="flex h-screen items-center justify-center"> */}
-      <div className="w-full  rounded-3xl  px-8 py-10 h-screen items-center ">
+      <div className="w-full  rounded-3xl  px-8 py-10 h-screen items-center">
         <div className="mb-8 text-center">
           <h1 className="text-2xl font-extrabold sm:text-3xl mb-4">Welcome to Farm Mall</h1>
           <p className="text-sm">Enter your credentials to log in</p>
@@ -108,7 +107,6 @@ function Login() {
         </form>
       </div>
     </div>
-    // </div>
 
   );
 }
