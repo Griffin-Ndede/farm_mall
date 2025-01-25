@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Mail, Lock, ArrowRight } from 'lucide-react';
 import Hero from './Hero';
@@ -104,6 +104,7 @@ function Login() {
             Sign in
             <ArrowRight className="h-5 w-5" />
           </button>
+          <p>Dont have an account? <Link to="/register">Sign up</Link></p>
         </form>
       </div>
     </div>
