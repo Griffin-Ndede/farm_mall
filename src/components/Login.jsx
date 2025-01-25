@@ -44,14 +44,14 @@ function Login() {
   };
 
   return (
-    <div className='flex h-screen justify-flex-col lg:flex-row'>
+    <div className='flex h-screen'>
       <Hero/>
-      <div className="w-full  rounded-3xl  px-8 py-10 h-screen items-center">
+      <div className="w-fit rounded-3xl h-fit shadow-3xl items-center mx-auto md:my-52 p-10">
         <div className="mb-8 text-center">
-          <h1 className="text-2xl font-extrabold sm:text-3xl mb-4">Welcome to Farm Mall</h1>
-          <p className="text-sm">Enter your credentials to log in</p>
+          <h1 className="text-4xl font-extrabold sm:text-5xl mb-4">Welcome to <span className='text-custom-green'>FarmMall</span></h1>
+          <p>Enter your credentials to log in</p>
         </div>
-        <form onSubmit={handleLogin} className="space-y-6">
+        <form onSubmit={handleLogin} className="space-y-10">
           <div>
             <label className="block mb-2 text-sm font-medium">Email Address</label>
             <div className="relative">
@@ -61,7 +61,7 @@ function Login() {
                 name="username"
                 value={formData.username}
                 onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-3 text-black border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
+                className="w-full pl-10 pr-4 py-2 text-black border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
                 placeholder="you@example.com"
                 required
               />
@@ -76,14 +76,14 @@ function Login() {
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
                 placeholder="••••••••"
                 required
               />
             </div>
           </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
+          <div className="flex items-center justify-center">
+            {/* <div className="flex items-center">
               <input
                 type="checkbox"
                 id="remember"
@@ -92,7 +92,7 @@ function Login() {
               <label htmlFor="remember" className="ml-2 text-sm text-gray-700">
                 Remember me
               </label>
-            </div>
+            </div> */}
             <a href="#" className="text-sm font-medium text-custom-green hover:text-green-600">
               Forgot password?
             </a>

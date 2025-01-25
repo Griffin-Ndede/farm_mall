@@ -8,7 +8,7 @@ function Hero() {
         alt="Agricultural field"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 to-green-800/50 flex items-center justify-center p-12">
+      <div className="absolute inset-0 bg-gradient-to-r from-custom-green/70 to-custom-green/50 flex items-center justify-center p-12">
         <div className="text-white max-w-xl">
           <Sprout className="h-12 w-12 mb-8" />
           <h2 className="text-4xl font-bold mb-4">Growing Together</h2>
