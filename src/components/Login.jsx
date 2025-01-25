@@ -6,7 +6,10 @@ import { Mail, Lock, ArrowRight } from 'lucide-react';
 import Hero from './Hero';
 
 function Login() {
-  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [formData, setFormData] = useState({ 
+    username: '', 
+    password: '' 
+  });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -48,7 +51,7 @@ function Login() {
       <Hero/>
       <div className="w-fit rounded-3xl h-fit shadow-3xl items-center mx-auto md:my-52 p-10">
         <div className="mb-8 text-center">
-          <h1 className="text-4xl font-extrabold sm:text-5xl mb-4">Welcome to <span className='text-custom-green'>FarmMall</span></h1>
+          <h1 className="text-4xl font-extrabold sm:text-5xl mb-4">Welcome back <span className='text-custom-green'>FarmMall</span></h1>
           <p>Enter your credentials to log in</p>
         </div>
         <form onSubmit={handleLogin} className="space-y-10">
@@ -57,7 +60,7 @@ function Login() {
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
-                type="email"
+                type="text"
                 name="username"
                 value={formData.username}
                 onChange={handleInputChange}
@@ -99,12 +102,14 @@ function Login() {
           </div>
           <button
             type="submit"
-            className="flex items-center justify-center w-full py-3 text-white bg-custom-green rounded-3xl font-medium gap-2 hover:bg-custom-green focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"
+            className="flex items-center justify-center w-1/3 mx-auto py-3 text-white bg-custom-green rounded-3xl font-medium gap-2 hover:bg-custom-green focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"
           >
-            Sign in
+            Login
             <ArrowRight className="h-5 w-5" />
           </button>
-          <p>Dont have an account? <Link to="/register">Sign up</Link></p>
+          <p className="text-center text-sm">
+            Don&apos;t have an account? <Link to="/register" className="text-custom-green">Sign up</Link>
+          </p>
         </form>
       </div>
     </div>

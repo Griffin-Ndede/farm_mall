@@ -1,7 +1,9 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { Mail, Lock, ArrowRight } from 'lucide-react';
+import Hero from './Hero';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -13,7 +15,7 @@ function Signup() {
     password2: '',
   });
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +27,7 @@ function Signup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await axios.post('https://api.farmmall.co.ke/register/', {
         username: formData.username,
@@ -35,21 +37,18 @@ function Signup() {
         password: formData.password,
         password2: formData.password2,
       });
-  
+
       if (response.status === 201) {
         navigate('/login');
-        successAlert()
+        successAlert();
       }
     } catch (error) {
-      // Log the full error response for debugging
       console.error('Registration error:', error.response.data);
       failureAlert();
-      
-      // Provide a more informative error message
+
       if (error.response && error.response.data) {
-        // Log specific validation errors if available
         if (error.response.data.password) {
-          setError(error.response.data.password[0]); // Display the first error message for the password
+          setError(error.response.data.password[0]);
         } else {
           setError('Registration failed. Please check your details and try again.');
         }
@@ -58,124 +57,136 @@ function Signup() {
       }
     }
   };
-   // function to show success alert prompt
-   const successAlert = () => {
+
+  const successAlert = () => {
     Swal.fire({
       title: 'Success',
       text: 'Registration successful',
       icon: 'success',
       confirmButtonText: 'OK',
-    })
+    });
   };
 
-  // function to show failure alert prompt
-  const failureAlert = (message) => {
+  const failureAlert = () => {
     Swal.fire({
       title: 'Error',
-      text: message,
+      text: 'Registration failed. Please try again later.',
       icon: 'error',
       confirmButtonText: 'OK',
     });
   };
 
   return (
-    <div className="flex h-screen w-full items-center justify-center">
-      <div className="rounded-xl bg-black w-full max-w-md lg:w-1/3 bg-opacity-25 px-8 sm:px-12 lg:px-16 py-10 shadow-lg backdrop-blur-md">
-        <div className="text-white">
-          <div className="mb-8 flex flex-col items-center">
-            <h1 className="mb-2 font-extrabold text-2xl sm:text-3xl">Farm Mall</h1>
-            <span className="text-white text-xs sm:text-sm">Enter details to create an account</span>
-          </div>
-          <form onSubmit={handleSignup} className="flex flex-col items-center">
-            <div className="mb-4 w-full text-sm">
-              <label htmlFor="username">Username</label>
+    <div className="flex h-screen">
+      <div className="w-fit rounded-3xl h-fit shadow-3xl items-center mx-auto p-10">
+        <div className="mb-8 text-center">
+          <h1 className="text-4xl font-extrabold sm:text-5xl mb-4">Welcome to <span className="text-custom-green">FarmMall</span></h1>
+          <p>Enter details to create an account</p>
+        </div>
+        <form onSubmit={handleSignup} className="space-y-10">
+          <div>
+            <label className="block mb-2 text-sm font-medium">Username</label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
-                className="w-full max-w-xs rounded-3xl font text-black py-2 px-4"
                 type="text"
                 name="username"
-                placeholder="Username"
                 value={formData.username}
                 onChange={handleInputChange}
+                className="w-full pl-10 pr-4 py-2 text-black border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
+                placeholder="Username"
                 required
               />
             </div>
-            <div className="mb-4 w-full text-sm">
-              <label htmlFor="firstName">First name</label>
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium">First Name</label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
-                className="w-full max-w-xs rounded-3xl font text-black py-2 px-4"
                 type="text"
                 name="firstName"
-                placeholder="John"
                 value={formData.firstName}
                 onChange={handleInputChange}
+                className="w-full pl-10 pr-4 py-2 text-black border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
+                placeholder="First Name"
                 required
               />
             </div>
-            <div className="mb-4 w-full text-sm">
-              <label htmlFor="lastName">Last name</label>
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium">Last Name</label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
-                className="w-full max-w-xs rounded-3xl font text-black py-2 px-4"
                 type="text"
                 name="lastName"
-                placeholder="Doe"
                 value={formData.lastName}
                 onChange={handleInputChange}
+                className="w-full pl-10 pr-4 py-2 text-black border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
+                placeholder="Last Name"
                 required
               />
             </div>
-
-            <div className="mb-4 w-full text-sm">
-              <label htmlFor="email">Email</label>
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium">Email</label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
-                className="w-full max-w-xs rounded-3xl font text-black py-2 px-4"
                 type="email"
                 name="email"
-                placeholder="john@gmail.com"
                 value={formData.email}
                 onChange={handleInputChange}
+                className="w-full pl-10 pr-4 py-2 text-black border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
+                placeholder="you@example.com"
                 required
               />
             </div>
-            <div className="mb-4 w-full text-sm">
-              <label htmlFor="password">Password</label>
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium">Password</label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
-                className="w-full max-w-xs rounded-3xl font text-black py-2 px-4"
                 type="password"
                 name="password"
-                placeholder="*********"
                 value={formData.password}
                 onChange={handleInputChange}
+                className="w-full pl-10 pr-4 py-2 text-black border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
+                placeholder="••••••••"
                 required
               />
             </div>
-            <div className="mb-4 w-full text-sm">
-              <label htmlFor="password2">Confirm Password</label>
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium">Confirm Password</label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
-                className="w-full max-w-xs rounded-3xl font text-black py-2 px-4"
                 type="password"
                 name="password2"
-                placeholder="*********"
                 value={formData.password2}
                 onChange={handleInputChange}
+                className="w-full pl-10 pr-4 py-2 text-black border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
+                placeholder="••••••••"
                 required
               />
             </div>
-
-            <button type="submit" className="w-fit max-w-xs rounded-3xl bg-custom-green font text-white py-2 px-4 mb-4">
-              Create account
-            </button>
-
-            {error && <p className="text-red-500 text-xs">{error}</p>}
-
-            <p className="text-xs sm:text-sm">
-              Have an account?{' '}
-              <Link to="/login" className="text-yellow-500 underline">
-                Sign in
-              </Link>.
-            </p>
-          </form>
-        </div>
+          </div>
+          <button
+            type="submit"
+            className="flex items-center justify-center w-1/3 mx-auto py-3 text-white bg-custom-green rounded-3xl font-medium gap-2 hover:bg-custom-green focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"
+          >
+            Create account
+            <ArrowRight className="h-5 w-5" />
+          </button>
+          <p className="text-center text-sm">
+            Already have an account? <Link to="/login" className="text-custom-green">Sign in</Link>
+          </p>
+        </form>
       </div>
+      <Hero />
     </div>
   );
 }
