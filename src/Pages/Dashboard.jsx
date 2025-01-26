@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -17,6 +17,30 @@ function Dashboard() {
     activityDate: "",
   });
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+
+  // Fetch activities from the backend
+  useEffect(() => {
+    const fetchActivities = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/activities/"); // Replace with your actual API endpoint
+        const data = await response.json();
+console.log(data)
+        // Map backend data to event format
+        const formattedEvents = data.map((activity) => ({
+          title: `${activity.crop_name} - ${activity.activity}`,
+          start: moment(activity.activityDate).toDate(),
+          end: moment(activity.activityDate).toDate(),
+        }));
+        
+        setEvents(formattedEvents);
+      } catch (error) {
+        console.error("Error fetching activities:", error);
+      }
+    };
+
+    fetchActivities();
+  }, []); // Empty dependency array ensures it runs once when the component mounts
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -82,10 +106,10 @@ function Dashboard() {
           </Link>
 
           <AnchorLink href="#activity">
-          <button className="group flex items-center space-x-4 px-4 py-2 rounded-md hover:bg-green-100 transition duration-200">
-            <FaSeedling className="text-green-600 group-hover:text-green-800" />
-            <span className="text-white  group-hover:text-green-800">Add Activity</span>
-          </button>
+            <button className="group flex items-center space-x-4 px-4 py-2 rounded-md hover:bg-green-100 transition duration-200">
+              <FaSeedling className="text-green-600 group-hover:text-green-800" />
+              <span className="text-white  group-hover:text-green-800">Add Activity</span>
+            </button>
           </AnchorLink>
           <AnchorLink
             href="#calendar"
