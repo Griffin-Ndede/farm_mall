@@ -14,7 +14,7 @@ function Dashboard() {
   const [formData, setFormData] = useState({
     cropName: "",
     activity: "",
-    activityDate: "",
+    activity_date: "",
   });
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -25,14 +25,14 @@ function Dashboard() {
       try {
         const response = await fetch("http://127.0.0.1:8000/activities/"); // Replace with your actual API endpoint
         const data = await response.json();
-console.log(data)
+        console.log(data)
         // Map backend data to event format
         const formattedEvents = data.map((activity) => ({
           title: `${activity.crop_name} - ${activity.activity}`,
-          start: moment(activity.activityDate).toDate(),
-          end: moment(activity.activityDate).toDate(),
+          start: moment(activity.activity_date).toDate(),
+          end: moment(activity.activity_date).toDate(),
         }));
-        
+
         setEvents(formattedEvents);
       } catch (error) {
         console.error("Error fetching activities:", error);
@@ -42,41 +42,64 @@ console.log(data)
     fetchActivities();
   }, []); // Empty dependency array ensures it runs once when the component mounts
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const activityDate = new Date(formData.activityDate);
+    const activity_date = new Date(formData.activity_date);
 
-    // Add the main event to the calendar
+    // Main event object
     const newEvent = {
-      title: `${formData.cropName} - ${formData.activity}`,
-      start: activityDate,
-      end: activityDate,
+        crop_name: formData.cropName, 
+        activity: formData.activity,   
+        activity_date: activity_date,  
     };
 
-    // If the activity is planting, add weeding and harvesting projections
     let projectedEvents = [];
     if (formData.activity.toLowerCase() === "planting") {
-      const plantingDate = moment(formData.activityDate);
-      projectedEvents = [
-        {
-          title: `${formData.cropName} - Weeding`,
-          start: plantingDate.clone().add(3, "weeks").toDate(), // Use .toDate() to convert to Date object
-          end: plantingDate.clone().add(3, "weeks").toDate(),   // Use .toDate() to convert to Date object
-        },
-        {
-          title: `${formData.cropName} - Harvesting`,
-          start: plantingDate.clone().add(3, "months").toDate(), // Use .toDate() to convert to Date object
-          end: plantingDate.clone().add(3, "months").toDate(),   // Use .toDate() to convert to Date object
-        },
-      ];
+        const plantingDate = moment(formData.activity_date);
+        projectedEvents = [
+            {
+                crop_name: formData.cropName,
+                activity: "Weeding",
+                activity_date: plantingDate.clone().add(3, "weeks").toDate(),
+            },
+            {
+                crop_name: formData.cropName,
+                activity: "Harvesting",
+                activity_date: plantingDate.clone().add(3, "months").toDate(),
+            },
+        ];
     }
 
-    // Update events in the calendar
-    setEvents([...events, newEvent, ...projectedEvents]);
+    const allEvents = [newEvent, ...projectedEvents];
+
+    // Update the calendar with the new events
+    setEvents([...events, ...allEvents]);
 
     // Clear the form
-    setFormData({ cropName: "", activity: "", activityDate: "" });
-  };
+    setFormData({ cropName: "", activity: "", activity_date: "" });
+
+    // Post the events to the backend
+    try {
+        const response = await fetch("http://127.0.0.1:8000/activities/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(allEvents), // Send combined event data
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log("Events successfully posted:", result);
+        } else {
+            console.error("Error posting events:", response.statusText);
+        }
+    } catch (error) {
+        console.error("Error posting events:", error);
+    }
+};
+
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -172,8 +195,8 @@ console.log(data)
                 <label className="block text-gray-700 ">Date</label>
                 <input
                   type="date"
-                  name="activityDate"
-                  value={formData.activityDate}
+                  name="activity_date"
+                  value={formData.activity_date}
                   onChange={handleInputChange}
                   className="w-full p-2 border rounded"
                   required
