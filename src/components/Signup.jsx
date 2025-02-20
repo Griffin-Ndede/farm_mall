@@ -8,11 +8,10 @@ import Hero from './Hero';
 function Signup() {
   const [formData, setFormData] = useState({
     username: '',
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
-    password2: '',
   });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -31,11 +30,10 @@ function Signup() {
     try {
       const response = await axios.post('https://api.farmmall.co.ke/register/', {
         username: formData.username,
-        first_name: formData.firstName,
-        last_name: formData.lastName,
+        first_name: formData.first_name,
+        last_name: formData.last_name,
         email: formData.email,
         password: formData.password,
-        password2: formData.password2,
       });
 
       if (response.status === 201) {
@@ -105,8 +103,8 @@ function Signup() {
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
                 type="text"
-                name="firstName"
-                value={formData.firstName}
+                name="first_name"
+                value={formData.first_name}
                 onChange={handleInputChange}
                 className="w-full pl-10 pr-4 py-2 text-black border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
                 placeholder="First Name"
@@ -120,8 +118,8 @@ function Signup() {
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
                 type="text"
-                name="lastName"
-                value={formData.lastName}
+                name="last_name"
+                value={formData.last_name}
                 onChange={handleInputChange}
                 className="w-full pl-10 pr-4 py-2 text-black border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
                 placeholder="Last Name"
@@ -160,19 +158,6 @@ function Signup() {
             </div>
           </div>
           <div>
-            <label className="block mb-2 text-sm font-medium">Confirm Password</label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
-              <input
-                type="password"
-                name="password2"
-                value={formData.password2}
-                onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-2 text-black border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
-                placeholder="••••••••"
-                required
-              />
-            </div>
           </div>
           <button
             type="submit"
