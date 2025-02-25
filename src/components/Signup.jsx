@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useState, useContext} from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Mail, Lock, ArrowRight } from 'lucide-react';
 import Hero from './Hero';
 import BASE_URL from '../config';
+import { UserContext } from '../Context/UserContext';
 
 function Signup() {
+  const { setUser } = useContext(UserContext); // Get setUser from context
   const [formData, setFormData] = useState({
     username: '',
     first_name: '',
@@ -29,15 +31,10 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${BASE_URL}/register/`, {
-        username: formData.username,
-        first_name: formData.first_name,
-        last_name: formData.last_name,
-        email: formData.email,
-        password: formData.password,
-      });
+      const response = await axios.post(`${BASE_URL}/register/`, formData);
 
       if (response.status === 201) {
+        setUser(response.data.user) //setting the user in context
         navigate('/login');
         successAlert();
       }
