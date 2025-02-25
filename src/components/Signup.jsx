@@ -1,14 +1,12 @@
-import { useState, useContext} from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { Mail, Lock, ArrowRight } from 'lucide-react';
+import { Mail, Lock, ArrowRight, User } from 'lucide-react';
 import Hero from './Hero';
 import BASE_URL from '../config';
-import { UserContext } from '../Context/UserContext';
 
 function Signup() {
-  const { setUser } = useContext(UserContext); // Get setUser from context
   const [formData, setFormData] = useState({
     username: '',
     first_name: '',
@@ -31,10 +29,15 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${BASE_URL}/register/`, formData);
+      const response = await axios.post(`${BASE_URL}/register/`, {
+        username: formData.username,
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        email: formData.email,
+        password: formData.password,
+      });
 
       if (response.status === 201) {
-        setUser(response.data.user) //setting the user in context
         navigate('/login');
         successAlert();
       }
@@ -98,7 +101,7 @@ function Signup() {
           <div>
             <label className="block mb-2 text-sm font-medium">First Name</label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
                 type="text"
                 name="first_name"
@@ -113,7 +116,7 @@ function Signup() {
           <div>
             <label className="block mb-2 text-sm font-medium">Last Name</label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
                 type="text"
                 name="last_name"
