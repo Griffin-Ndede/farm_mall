@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { Mail, Lock, ArrowRight } from 'lucide-react';
+import { Lock, ArrowRight, User } from 'lucide-react';
 import Hero from './Hero';
 import BASE_URL from '../config';
 
@@ -23,7 +23,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${BASE_URL}/login`, formData);
+      const response = await axios.post(`${BASE_URL}/login/`, formData);
 
       if (response.status === 200) {
         localStorage.setItem('token', response.data.token);
@@ -57,9 +57,9 @@ function Login() {
         </div>
         <form onSubmit={handleLogin} className="space-y-10">
           <div>
-            <label className="block mb-2 text-sm font-medium">Email Address</label>
+            <label className="block mb-2 text-sm font-medium">Username</label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
               <input
                 type="text"
                 name="username"

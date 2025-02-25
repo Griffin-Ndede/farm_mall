@@ -29,7 +29,7 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${BASE_URL}/register`, {
+      const response = await axios.post(`${BASE_URL}/register/`, {
         username: formData.username,
         first_name: formData.first_name,
         last_name: formData.last_name,

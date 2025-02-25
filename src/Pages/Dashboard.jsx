@@ -5,6 +5,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { FaSeedling, FaCalendarAlt, FaHome, FaBars, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import BASE_URL from "../config";
 
 // Calendar Localizer
 const localizer = momentLocalizer(moment);
@@ -23,7 +24,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/activities/"); // Replace with your actual API endpoint
+        const response = await fetch(`${BASE_URL}/activities/`); 
         const data = await response.json();
         console.log(data)
         // Map backend data to event format

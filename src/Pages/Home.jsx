@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Navbar from "../Components/Navbar"
-import Footer from "../Components/Footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { FaCalendarCheck, FaChartLine } from "react-icons/fa";
 import { FaListCheck } from "react-icons/fa6";
 
