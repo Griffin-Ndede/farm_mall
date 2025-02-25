@@ -102,7 +102,7 @@ function Dashboard() {
   };
 
   return (
-    <div className="flex h-full">
+    <div className="flex h-fit">
       {/* Mini Navbar */}
       <div className="fixed top-0 left-0 w-full p-4 bg-white flex justify-between items-center z-20 shadow-lg">
         <Link to="/"><h1 className="text-lg font-bold">Farmmall Dashboard</h1></Link>
