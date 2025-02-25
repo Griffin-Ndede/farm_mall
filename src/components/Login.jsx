@@ -4,6 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Mail, Lock, ArrowRight } from 'lucide-react';
 import Hero from './Hero';
+import BASE_URL from '../config';
 
 function Login() {
   const [formData, setFormData] = useState({ 
@@ -22,7 +23,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://api.farmmall.co.ke/login/', formData);
+      const response = await axios.post(`${BASE_URL}/login`, formData);
 
       if (response.status === 200) {
         localStorage.setItem('token', response.data.token);

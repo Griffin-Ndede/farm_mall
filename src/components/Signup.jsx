@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Mail, Lock, ArrowRight } from 'lucide-react';
 import Hero from './Hero';
+import BASE_URL from '../config';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://api.farmmall.co.ke/register/', {
+      const response = await axios.post(`${BASE_URL}/register`, {
         username: formData.username,
         first_name: formData.first_name,
         last_name: formData.last_name,
@@ -48,10 +49,10 @@ function Signup() {
         if (error.response.data.password) {
           setError(error.response.data.password[0]);
         } else {
-          setError('Registration failed. Please check your details and try again.');
+          setError('Registration failed. Please check your details and try again.', error.response.data);
         }
       } else {
-        setError('Registration failed. Please try again later.');
+        setError('Registration failed. Please try again later.', error.response.data);
       }
     }
   };
