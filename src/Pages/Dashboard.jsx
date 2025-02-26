@@ -3,7 +3,7 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { FaSeedling, FaCalendarAlt, FaHome, FaBars, FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import BASE_URL from "../config";
 import UserContext from "../Context/UserContext";
@@ -19,14 +19,25 @@ function Dashboard() {
     activity_date: "",
   });
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const { user, logout } = useContext(UserContext);
-
-  console.log(user);
+  const { user, token, logout } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/activities/`);
+        const response = await fetch(`${BASE_URL}/activities/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.status === 401) {
+          // Token is expired or invalid
+          logout();
+          navigate("/login");
+          return;
+        }
+
         const data = await response.json();
         console.log(data);
 
@@ -43,7 +54,7 @@ function Dashboard() {
     };
 
     fetchActivities();
-  }, []);
+  }, [token, logout, navigate]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -52,7 +63,7 @@ function Dashboard() {
     const newEvent = {
       crop_name: formData.cropName,
       activity: formData.activity,
-      activity_date: activity_date,
+      activity_date: activity_date.toISOString(),
     };
 
     let projectedEvents = [];
@@ -62,12 +73,12 @@ function Dashboard() {
         {
           crop_name: formData.cropName,
           activity: "Weeding",
-          activity_date: plantingDate.clone().add(3, "weeks").toDate(),
+          activity_date: plantingDate.clone().add(3, "weeks").toISOString(),
         },
         {
           crop_name: formData.cropName,
           activity: "Harvesting",
-          activity_date: plantingDate.clone().add(3, "months").toDate(),
+          activity_date: plantingDate.clone().add(3, "months").toISOString(),
         },
       ];
     }
@@ -77,10 +88,11 @@ function Dashboard() {
     setFormData({ cropName: "", activity: "", activity_date: "" });
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/activities/", {
+      const response = await fetch(`${BASE_URL}/activities/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(allEvents),
       });
@@ -105,7 +117,9 @@ function Dashboard() {
     <div className="flex h-fit">
       {/* Mini Navbar */}
       <div className="fixed top-0 left-0 w-full p-4 bg-white flex justify-between items-center z-20 shadow-lg">
-        <Link to="/"><h1 className="text-lg font-bold">Farmmall Dashboard</h1></Link>
+        <Link to="/">
+          <h1 className="text-lg font-bold">Farmmall Dashboard</h1>
+        </Link>
         <div className="flex items-center space-x-4">
           {user ? (
             <>
@@ -125,8 +139,9 @@ function Dashboard() {
 
       {/* Side Navigation */}
       <div
-        className={`w-64 bg-custom-green text-white flex flex-col p-4 top-0 fixed h-full z-10 transition-transform duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } md:translate-x-0 mt-14`}
+        className={`w-64 bg-custom-green text-white flex flex-col p-4 top-0 fixed h-full z-10 transition-transform duration-300 ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 mt-14`}
       >
         <nav className="space-y-4 p-4">
           <Link
@@ -204,7 +219,10 @@ function Dashboard() {
                 />
               </div>
 
-              <button type="submit" className="py-2 px-4 rounded-3xl mx-auto flex justify-center text-white bg-custom-green">
+              <button
+                type="submit"
+                className="py-2 px-4 rounded-3xl mx-auto flex justify-center text-white bg-custom-green"
+              >
                 Add Activity
               </button>
             </form>
@@ -213,7 +231,13 @@ function Dashboard() {
           {/* Calendar */}
           <div className="bg-white rounded-lg shadow p-6" id="calendar">
             <h3 className="text-xl font-bold mb-4">Calendar</h3>
-            <Calendar localizer={localizer} events={events} startAccessor="start" endAccessor="end" style={{ height: 400 }} />
+            <Calendar
+              localizer={localizer}
+              events={events}
+              startAccessor="start"
+              endAccessor="end"
+              style={{ height: 400 }}
+            />
           </div>
         </div>
       </div>
