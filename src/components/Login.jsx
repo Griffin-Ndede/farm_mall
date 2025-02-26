@@ -28,10 +28,11 @@ function Login() {
       const response = await axios.post(`${BASE_URL}/login/`, formData);
 
       if (response.status === 200) {
-        const { token, user } = response.data; // Extract token and user data
-
-        localStorage.setItem("token", token);
-        login(user, token); // Store in context
+        const token = response.data; // Extract token and user data
+console.log(response.data)
+        // localStorage.setItem("token", token);
+        login(token); // Store in context
+        console.log(token)
 
         Swal.fire({
           title: "Success",
@@ -76,7 +77,7 @@ function Login() {
                 value={formData.username}
                 onChange={handleInputChange}
                 className="w-full pl-10 pr-4 py-2 text-black border border-gray-300 rounded-3xl outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-colors"
-                placeholder="you@example.com"
+                placeholder="John Doe"
                 required
               />
             </div>

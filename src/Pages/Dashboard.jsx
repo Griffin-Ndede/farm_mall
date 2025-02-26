@@ -27,13 +27,11 @@ function Dashboard() {
       try {
         const response = await fetch(`${BASE_URL}/activities/`, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token.access}`,
           },
         });
 
         if (response.status === 401) {
-          // Token is expired or invalid
-          logout();
           navigate("/login");
           return;
         }

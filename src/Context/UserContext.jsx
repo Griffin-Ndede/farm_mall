@@ -1,28 +1,23 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem("token") || null);
+  const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")) || null);
 
-  // Check for token in localStorage on initial load
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      setToken(storedToken);
-    }
-  }, []);
 
-  const login = (userData, authToken) => {
-    setUser(userData);
+
+  const login = (authToken) => {
     setToken(authToken);
-    localStorage.setItem("token", authToken); // Store token for persistence
+    console.log("this works")
+    localStorage.setItem("token", JSON.stringify(authToken)); // Store token for persistence
   };
 
   const logout = () => {
     setUser(null);
     setToken(null);
+    console.log("this works as well")
     localStorage.removeItem("token"); // Remove token from storage
   };
 
