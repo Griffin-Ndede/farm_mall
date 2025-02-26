@@ -24,19 +24,22 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     
-
     try {
       const response = await axios.post(`${BASE_URL}/login/`, formData);
-
+  
       if (response.status === 200) {
-        localStorage.setItem('token', response.data.token);
-        login({ username: formData.username }); //storing user information in the context
+        const { token, user } = response.data; // Extract token and user data
+  
+        localStorage.setItem("token", token); 
+        login(user, token); // Store in context
+  
         Swal.fire({
           title: 'Success',
           text: 'Login successful',
           icon: 'success',
           confirmButtonText: 'OK',
         });
+  
         navigate('/dashboard');
       }
     } catch (error) {
@@ -50,6 +53,7 @@ function Login() {
       });
     }
   };
+  ;
 
   return (
     <div className='flex h-screen'>
