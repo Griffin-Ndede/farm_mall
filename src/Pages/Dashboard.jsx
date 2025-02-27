@@ -22,6 +22,33 @@ function Dashboard() {
   const { user, token, logout } = useContext(UserContext);
   const navigate = useNavigate();
 
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      if (!user) return;
+  
+      try {
+        const response = await fetch(`${BASE_URL}/users/${user.user_id}/`, {
+          headers: {
+            Authorization: `Bearer ${token.access}`,
+          },
+        });
+  
+        if (response.ok) {
+          const userData = await response.json();
+          console.log("User Details:", userData);
+        } else {
+          console.error("Failed to fetch user details:", response.status);
+        }
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+  
+    fetchUserDetails();
+  }, [user, token]);
+
+  console.log(user)
   useEffect(() => {
     const fetchActivities = async () => {
       try {
@@ -111,6 +138,11 @@ function Dashboard() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleLogout = (e) => {
+    logout()
+    navigate("/login")
+  }
+
   return (
     <div className="flex h-fit">
       {/* Mini Navbar */}
@@ -123,7 +155,7 @@ function Dashboard() {
             <>
               <span className="font-medium">Welcome {user.username}</span>
               <button
-                onClick={logout}
+                onClick={handleLogout}
                 className="px-3 py-2 bg-red-600 text-white rounded-3xl text-sm"
               >
                 Logout
