@@ -48,7 +48,7 @@ function Dashboard() {
     fetchUserDetails();
   }, [user, token]);
 
-  console.log(user)
+  console.log("this is my user", user)
   useEffect(() => {
     const fetchActivities = async () => {
       try {
