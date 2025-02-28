@@ -27,32 +27,16 @@ export const UserProvider = ({ children }) => {
     }
   }, [token]);
 
-  const login = async (authToken) => {
+  const login = (authToken) => {
     try {
-      const decodedUser = jwtDecode(authToken.access);
+      const decodedUser = jwtDecode(authToken.access); // Extract user info
+      setUser(decodedUser);
       setToken(authToken);
       localStorage.setItem("token", JSON.stringify(authToken)); // Store token persistently
-  
-      // Fetch full user details using the /profile/ endpoint
-      const response = await fetch(`${BASE_URL}/profile/`, {
-        headers: {
-          Authorization: `Bearer ${authToken.access}`,
-        },
-      });
-  
-      if (response.ok) {
-        const userData = await response.json();
-        setUser(userData); // Store full user data in context
-        localStorage.setItem("user", JSON.stringify(userData)); // Persist user data
-      } else {
-        console.error("Failed to fetch user details:", response.status);
-      }
     } catch (error) {
       console.error("Invalid token:", error);
-      logout();
     }
   };
-  
 
   const logout = () => {
     setUser(null);
