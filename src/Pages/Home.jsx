@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { FaCalendarCheck, FaChartLine } from "react-icons/fa";
 import { FaListCheck } from "react-icons/fa6";
+import Carousel from "react-multi-carousel";
 
 
 function Home() {
@@ -26,6 +27,24 @@ function Home() {
     setEstimatedCost(cost);
   }
 
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+  };
   return (
     <>
       <Navbar />
@@ -187,6 +206,22 @@ function Home() {
 
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <Carousel
+              swipeable={true}
+              draggable={true}
+              showDots={true}
+              responsive={responsive}
+              infinite={true}
+              autoPlay={true}
+              autoPlaySpeed={3000}
+              keyBoardControl={true}
+              customTransition="all .5"
+              transitionDuration={500}
+              containerClass="carousel-container"
+              removeArrowOnDeviceType={["tablet", "mobile"]}
+              dotListClass="custom-dot-list-style"
+              itemClass="carousel-item-padding-20-px"
+            >
         {[...Array(6)].map((_, index) => (
           <div key={index} className="px-4">
             <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-6 text-gray-800 font-light">
@@ -206,6 +241,7 @@ function Home() {
             </div>
           </div>
         ))}
+        </Carousel>
       </div>
     </div>
   </div>
