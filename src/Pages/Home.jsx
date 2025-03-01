@@ -45,6 +45,28 @@ function Home() {
       slidesToSlide: 1,
     },
   };
+  const testimonials = [
+    {
+      id: 1,
+      image: "https://via.placeholder.com/300", // Replace with actual image URL
+      name: "John Doe",
+      text: "Farm Mall has transformed my farming process!",
+    },
+    {
+      id: 2,
+      image: "https://via.placeholder.com/300",
+      name: "Jane Smith",
+      text: "Best farm management tool I've used.",
+    },
+    {
+      id: 3,
+      image: "https://via.placeholder.com/300",
+      name: "Michael Brown",
+      text: "Highly recommend for every farmer!",
+    },
+  ];
+
+
   return (
     <>
       <Navbar />
@@ -205,44 +227,40 @@ function Home() {
         </h3>
 
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <Carousel
-              swipeable={true}
-              draggable={true}
-              showDots={true}
-              responsive={responsive}
-              infinite={true}
-              autoPlay={true}
-              autoPlaySpeed={3000}
-              keyBoardControl={true}
-              customTransition="all .5"
-              transitionDuration={500}
-              containerClass="carousel-container"
-              removeArrowOnDeviceType={["tablet", "mobile"]}
-              dotListClass="custom-dot-list-style"
-              itemClass="carousel-item-padding-20-px"
-            >
-        {[...Array(6)].map((_, index) => (
-          <div key={index} className="px-4">
-            <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-6 text-gray-800 font-light">
-              <div className="flex items-center mb-4">
-                <div className="overflow-hidden rounded-full w-12 h-12 bg-gray-50 border border-gray-200">
-                  <img src={`https://i.pravatar.cc/100?img=${index + 1}`} alt="" />
-                </div>
-                <div className="flex-grow pl-4">
-                  <h6 className="font-bold text-sm uppercase text-gray-600">User {index + 1}</h6>
-                </div>
-              </div>
-              <p className="text-sm leading-tight">
-                <span className="text-lg leading-none italic font-bold text-gray-400 mr-1">&apos;</span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos sunt ratione dolor exercitationem minima quas.
-                <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">&apos;</span>
-              </p>
-            </div>
-          </div>
-        ))}
-        </Carousel>
+<div className="w-full flex justify-center">
+  <Carousel
+    swipeable={true}
+    draggable={true}
+    showDots={true}
+    responsive={responsive}
+    infinite={true}
+    autoPlay={true}
+    autoPlaySpeed={3000}
+    keyBoardControl={true}
+    customTransition="all .5s"
+    transitionDuration={500}
+    containerClass="carousel-container"
+    removeArrowOnDeviceType={["tablet", "mobile"]}
+    dotListClass="custom-dot-list-style"
+    itemClass="px-4"
+  >
+    {testimonials.map((testimonial) => (
+      <div
+        key={testimonial.id}
+        className="flex flex-col items-center bg-white shadow-lg rounded-lg p-6 mx-4"
+      >
+        <img
+          src={testimonial.image}
+          alt={testimonial.name}
+          className="w-24 h-24 rounded-full mb-4"
+        />
+        <h3 className="text-lg font-semibold">{testimonial.name}</h3>
+        <p className="text-gray-600 text-center">{testimonial.text}</p>
       </div>
+    ))}
+  </Carousel>
+</div>
+
     </div>
   </div>
   <div className="bg-gray-50 py-10">
