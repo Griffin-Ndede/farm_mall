@@ -14,7 +14,7 @@ const localizer = momentLocalizer(moment);
 function Dashboard() {
   const [events, setEvents] = useState([]);
   const [formData, setFormData] = useState({
-    cropName: "",
+    crop_name: "",
     activity: "",
     activity_date: "",
   });
@@ -55,55 +55,38 @@ function Dashboard() {
   }, [token, logout, navigate]);
 
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    const activity_date = new Date(formData.activity_date);
+const handleFormSubmit = async (e) => {
+  e.preventDefault();
+  const activity_date = moment(formData.activity_date).format("YYYY-MM-DD");
 
-    const newEvent = {
-      crop_name: formData.cropName,
-      activity: formData.activity,
-      activity_date: activity_date.toISOString(),
-    };
-
-    try {
-      const response = await fetch(`${BASE_URL}/activities/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token.access}`,
-        },
-        body: JSON.stringify(newEvent),
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        console.log("Activity successfully posted:", result);
-
-        // Fetch activities again to update the calendar
-        const fetchResponse = await fetch(`${BASE_URL}/activities/`, {
-          headers: {
-            Authorization: `Bearer ${token.access}`,
-          },
-        });
-
-        if (fetchResponse.ok) {
-          const data = await fetchResponse.json();
-          const formattedEvents = data.map((activity) => ({
-            title: `${activity.crop_name} - ${activity.activity}`,
-            start: moment(activity.activity_date).toDate(),
-            end: moment(activity.activity_date).toDate(),
-          }));
-          setEvents(formattedEvents);
-        }
-
-        setFormData({ cropName: "", activity: "", activity_date: "" });
-      } else {
-        console.error("Error posting activity:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error posting activity:", error);
-    }
+  const newEvent = {
+    crop_name: formData.crop_name,
+    activity: formData.activity,
+    activity_date: activity_date, // Ensure correct format
   };
+
+  try {
+    const response = await fetch(`${BASE_URL}/activities/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token.access}`,
+      },
+      body: JSON.stringify(newEvent),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log("Activity successfully posted:", result);
+      fetchActivities(); // Fetch updated activities
+    } else {
+      console.error("Error posting activity:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error posting activity:", error);
+  }
+};
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -192,8 +175,8 @@ function Dashboard() {
                   <label className="block text-gray-700">Crop Name</label>
                   <input
                     type="text"
-                    name="cropName"
-                    value={formData.cropName}
+                    name="crop_name"
+                    value={formData.crop_name}
                     onChange={handleInputChange}
                     className="w-full p-2 border rounded"
                     placeholder="Enter crop name"
