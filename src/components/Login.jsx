@@ -29,10 +29,7 @@ function Login() {
 
       if (response.status === 200) {
         const token = response.data; // Extract token and user data
-console.log(response.data)
-        // localStorage.setItem("token", token);
         login(token); // Store in context
-        console.log(token)
 
         Swal.fire({
           title: "Success",

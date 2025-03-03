@@ -67,7 +67,6 @@ function Home() {
       text: "Highly recommend for every farmer!",
     },
   ];
-  console.log(testimonials)
 
   return (
     <>

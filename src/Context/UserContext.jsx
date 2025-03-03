@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
+import axios from "axios";
+import BASE_URL from "../config";
 
 const UserContext = createContext();
 
@@ -16,15 +18,31 @@ export const UserProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    if (token?.access) {
+    const fetchUserProfile = async () => {
+      if (!token?.access) return;
+  
       try {
         const decodedUser = jwtDecode(token.access); // Decode the JWT
-        setUser(decodedUser);
+        const response = await fetch(`${BASE_URL}/profile/`, {
+          headers: {
+            Authorization: `Bearer ${token.access}`,
+          },
+        });
+  
+        if (response.ok) {
+          const userData = await response.json();
+          setUser(userData); // Set the user data in the context
+        } else {
+          console.error("Failed to fetch user profile:", response.status);
+          logout();
+        }
       } catch (error) {
-        console.error("Error decoding token:", error);
+        console.error("Error decoding token or fetching user profile:", error);
         logout();
       }
-    }
+    };
+  
+    fetchUserProfile();
   }, [token]);
 
   const login = (authToken) => {

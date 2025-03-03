@@ -22,33 +22,6 @@ function Dashboard() {
   const { user, token, logout } = useContext(UserContext);
   const navigate = useNavigate();
 
-
-  useEffect(() => {
-    const fetchUserDetails = async () => {
-      if (!user) return;
-  
-      try {
-        const response = await fetch(`${BASE_URL}/users/${user.user_id}/`, {
-          headers: {
-            Authorization: `Bearer ${token.access}`,
-          },
-        });
-  
-        if (response.ok) {
-          const userData = await response.json();
-          console.log("User Details:", userData);
-        } else {
-          console.error("Failed to fetch user details:", response.status);
-        }
-      } catch (error) {
-        console.error("Error fetching user details:", error);
-      }
-    };
-  
-    fetchUserDetails();
-  }, [user, token]);
-
-  console.log("this is my user", user)
   useEffect(() => {
     const fetchActivities = async () => {
       try {
@@ -117,7 +90,7 @@ function Dashboard() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token.access}`,
         },
         body: JSON.stringify(allEvents),
       });
@@ -139,9 +112,9 @@ function Dashboard() {
   };
 
   const handleLogout = (e) => {
-    logout()
-    navigate("/login")
-  }
+    logout();
+    navigate("/login");
+  };
 
   return (
     <div className="flex h-fit">
