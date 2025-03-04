@@ -189,7 +189,7 @@ function Dashboard() {
 
           <div className="grid grid-cols-1 gap-8">
             {/* Form */}
-            <div className="rounded-lg shadow p-6 h-screen" id="activity">
+            <div className="rounded-lg shadow p-6 h-fit" id="activity">
               <h3 className="text-xl font-bold mb-4">Add Crop Activity</h3>
               <form onSubmit={handleFormSubmit} className="space-y-6">
                 <div>
@@ -239,13 +239,13 @@ function Dashboard() {
 
             {/* Calendar */}
             <div className="bg-white rounded-lg shadow p-6" id="calendar">
-              <h3 className="text-xl font-bold mb-4">Calendar</h3>
+              <h3 className="text-sm mb-4">Calendar</h3>
               <Calendar
                 localizer={localizer}
                 events={events}
                 startAccessor="start"
                 endAccessor="end"
-                style={{ height: 400 }}
+                style={{ height: 600, fontSize:"12px" }}
               />
             </div>
           </div>
