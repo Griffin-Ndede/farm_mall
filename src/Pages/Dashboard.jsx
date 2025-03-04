@@ -24,49 +24,48 @@ function Dashboard() {
   const { user, token, logout } = useContext(UserContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchActivities = async () => {
-      try {
-        const response = await fetch(`${BASE_URL}/activities/`, {
-          headers: {
-            Authorization: `Bearer ${token.access}`,
-          },
-        });
-
-        if (response.status === 401) {
-          navigate("/login");
-          return;
-        }
-
-        const data = await response.json();
-        console.log(data);
-
-        const formattedEvents = data.map((activity) => ({
-          title: `${activity.crop_name} - ${activity.activity}`,
-          start: moment(activity.activity_date).toDate(),
-          end: moment(activity.activity_date).toDate(),
-        }));
-
-        setEvents(formattedEvents);
-      } catch (error) {
-        console.error("Error fetching activities:", error);
+  const fetchActivities = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/activities/`, {
+        headers: {
+          Authorization: `Bearer ${token.access}`,
+        },
+      });
+  
+      if (response.status === 401) {
+        navigate("/login");
+        return;
       }
-    };
-
+  
+      const data = await response.json();
+      console.log(data);
+  
+      const formattedEvents = data.map((activity) => ({
+        title: `${activity.crop_name} - ${activity.activity}`,
+        start: moment(activity.activity_date).toDate(),
+        end: moment(activity.activity_date).toDate(),
+      }));
+  
+      setEvents(formattedEvents);
+    } catch (error) {
+      console.error("Error fetching activities:", error);
+    }
+  };
+  
+  useEffect(() => {
     fetchActivities();
   }, [token, logout, navigate]);
-
-
+  
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const activity_date = moment(formData.activity_date).format("YYYY-MM-DD");
-
+  
     const newEvent = {
       crop_name: formData.crop_name,
       activity: formData.activity,
       activity_date: activity_date, 
     };
-
+  
     try {
       const response = await fetch(`${BASE_URL}/activities/`, {
         method: "POST",
@@ -76,7 +75,7 @@ function Dashboard() {
         },
         body: JSON.stringify(newEvent),
       });
-
+  
       if (response.ok) {
         const result = await response.json();
         console.log("Activity successfully posted:", result);
@@ -107,6 +106,7 @@ function Dashboard() {
       });
     }
   };
+  
 
 
   const handleInputChange = (e) => {
