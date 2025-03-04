@@ -6,7 +6,9 @@ import { FaSeedling, FaCalendarAlt, FaHome, FaBars, FaUser } from "react-icons/f
 import { Link, useNavigate } from "react-router-dom";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import BASE_URL from "../config";
+import Swal from "sweetalert2";
 import UserContext from "../Context/UserContext";
+
 
 // Calendar Localizer
 const localizer = momentLocalizer(moment);
@@ -55,37 +57,56 @@ function Dashboard() {
   }, [token, logout, navigate]);
 
 
-const handleFormSubmit = async (e) => {
-  e.preventDefault();
-  const activity_date = moment(formData.activity_date).format("YYYY-MM-DD");
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const activity_date = moment(formData.activity_date).format("YYYY-MM-DD");
 
-  const newEvent = {
-    crop_name: formData.crop_name,
-    activity: formData.activity,
-    activity_date: activity_date, // Ensure correct format
-  };
+    const newEvent = {
+      crop_name: formData.crop_name,
+      activity: formData.activity,
+      activity_date: activity_date, 
+    };
 
-  try {
-    const response = await fetch(`${BASE_URL}/activities/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token.access}`,
-      },
-      body: JSON.stringify(newEvent),
-    });
+    try {
+      const response = await fetch(`${BASE_URL}/activities/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token.access}`,
+        },
+        body: JSON.stringify(newEvent),
+      });
 
-    if (response.ok) {
-      const result = await response.json();
-      console.log("Activity successfully posted:", result);
-      fetchActivities(); // Fetch updated activities
-    } else {
-      console.error("Error posting activity:", response.statusText);
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Activity successfully posted:", result);
+        Swal.fire({
+          title: "Success!",
+          text: "Activity added successfully!",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+        setFormData({ crop_name: "", activity: "", activity_date: "" }); // Clear form
+        fetchActivities(); // Refresh calendar
+      } else {
+        console.error("Error posting activity:", response.statusText);
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to add activity.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
+    } catch (error) {
+      console.error("Error posting activity:", error);
+      Swal.fire({
+        title: "Error!",
+        text: "Something went wrong.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
     }
-  } catch (error) {
-    console.error("Error posting activity:", error);
-  }
-};
+  };
 
 
   const handleInputChange = (e) => {
