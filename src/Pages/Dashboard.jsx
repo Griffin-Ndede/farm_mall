@@ -130,7 +130,7 @@ function Dashboard() {
           <div className="flex items-center space-x-4">
             {user ? (
               <>
-                <span className="font-medium">Welcome {user.username}</span>
+                <span className="font-medium">Welcome, {user.username}</span>
                 <button
                   onClick={handleLogout}
                   className="px-3 py-2 bg-red-600 text-white rounded-3xl text-sm"

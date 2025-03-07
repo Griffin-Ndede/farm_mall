@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
-import axios from "axios";
 import BASE_URL from "../config";
 
 const UserContext = createContext();
@@ -47,9 +46,11 @@ export const UserProvider = ({ children }) => {
 
   const login = (authToken) => {
     try {
+      console.log("storing the token:", authToken)
       const decodedUser = jwtDecode(authToken.access); // Extract user info
       setUser(decodedUser);
       setToken(authToken);
+      console.log(authToken)
       localStorage.setItem("token", JSON.stringify(authToken)); // Store token persistently
     } catch (error) {
       console.error("Invalid token:", error);
