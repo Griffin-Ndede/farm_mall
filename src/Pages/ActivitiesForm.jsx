@@ -2,8 +2,9 @@ import { useState, useContext } from "react";
 import Swal from "sweetalert2";
 import UserContext from "../Context/UserContext";
 import BASE_URL from "../config";
+import moment from "moment";
 
-function ActivitiesForm({ fetchActivities }) {
+function ActivitiesForm() {
   const [formData, setFormData] = useState({
     crop_name: "",
     activity: "",
@@ -46,7 +47,6 @@ function ActivitiesForm({ fetchActivities }) {
           confirmButtonText: "OK",
         });
         setFormData({ crop_name: "", activity: "", activity_date: "" }); // Clear form
-        fetchActivities(); // Refresh calendar
       } else {
         console.error("Error posting activity:", response.statusText);
         Swal.fire({
