@@ -2,9 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { FaSeedling, FaCalendarAlt, FaHome, FaBars, FaUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 import BASE_URL from "../config";
 import Swal from "sweetalert2";
 import UserContext from "../Context/UserContext";
@@ -20,7 +18,6 @@ function Dashboard() {
     activity: "",
     activity_date: "",
   });
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { user, token, logout } = useContext(UserContext);
   const navigate = useNavigate();
 
