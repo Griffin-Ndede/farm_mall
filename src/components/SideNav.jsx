@@ -12,7 +12,7 @@ function SideNav() {
     const navItems = [
         { icon: FaHome, text: "Dashboard", path: "/dashboard/activities" },
         { icon: FaCalendarAlt, text: "Calendar", path: "/dashboard/calendar" },
-        { icon: FaUser, text: "User Profile", path: "/dashboard/userprofile" },
+        // { icon: FaUser, text: "User Profile", path: "/dashboard/userprofile" },
     ];
 
     const handleLogout = (e) => {
@@ -63,7 +63,7 @@ function SideNav() {
                         <Link
                             to={item.path}
                             key={index}
-                            className="flex items-center gap-3 w-full p-3 hover:bg-custom-green hover:text-white rounded-lg transition-colors duration-200"
+                            className="flex items-center gap-3 w-full p-3 hover:bg-custom-green hover:text-white rounded-3xl transition-colors duration-200"
                         >
                             <item.icon className="h-5 w-5" />
                             <span>{item.text}</span>
