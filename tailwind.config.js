@@ -10,7 +10,6 @@ export default {
         'custom-orange': '#ff4900',
         'custom-blue': '#005f6a',
         "custom-green": "green",
-        "green":"#476318"
       },
       screens: {
         'sm': '640px',

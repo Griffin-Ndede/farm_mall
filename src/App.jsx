@@ -6,6 +6,7 @@ import Login from './Components/Login'
 import { UserProvider } from './Context/UserContext'
 import ActivitiesForm from './Pages/ActivitiesForm'
 import CalendarView from './Pages/Calendar'
+import UserProfile from './Pages/UserProfile'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />}>
               <Route path="activities" element={<ActivitiesForm />} />
               <Route path="calendar" element={<CalendarView />} />
+              <Route path='userprofile' element={<UserProfile/>}/>
               {/* Default nested route */}
               <Route index element={<ActivitiesForm />} />
             </Route>
