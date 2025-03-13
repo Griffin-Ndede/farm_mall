@@ -38,8 +38,8 @@ function CalendarView() {
   }, [token]);
 
   return (
-    <div className="bg-white rounded-lg shadow p-6" id="calendar">
-      <h3 className="text-sm mb-4">Calendar</h3>
+    <div className="bg-white p-8 rounded-lg h-screen">
+      <h3 className="text-xl font-bold text-custom-green mb-4">Tracking calendar</h3>
       <Calendar
         localizer={localizer}
         events={events}

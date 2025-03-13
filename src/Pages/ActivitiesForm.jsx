@@ -68,7 +68,7 @@ function ActivitiesForm() {
   };
 
   return (
-    <div className="rounded-lg shadow p-6 h-fit" id="activity">
+    <div className="h-screen p-8" >
       <h3 className="text-xl font-bold mb-4">Add Crop Activity</h3>
       <form onSubmit={handleFormSubmit} className="space-y-6">
         <div>

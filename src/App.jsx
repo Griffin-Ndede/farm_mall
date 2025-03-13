@@ -5,7 +5,7 @@ import Signup from './Components/Signup'
 import Login from './Components/Login'
 import { UserProvider } from './Context/UserContext'
 import ActivitiesForm from './Pages/ActivitiesForm'
-import CalendarView from './Pages/CalendarView'
+import CalendarView from './Pages/Calendar'
 
 function App() {
 

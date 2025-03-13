@@ -17,7 +17,7 @@ function Dashboard() {
       <div className="flex h-fit">
         <SideNav/>
         {/* Main Content */}
-        <div className="flex-1 md:ml-64 p-8 bg-gray-100">
+        <div className="flex-1 md:ml-64 bg-gray-100">
           {/* Outlet for nested routes */}
           <Outlet />
         </div>
