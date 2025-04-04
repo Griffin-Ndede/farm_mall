@@ -71,7 +71,7 @@ function Home() {
   return (
     <>
       <Navbar />
-      <section id="home" className="min-h-fit bg-gradient-to-b from-green-50 to-green-100 mt-20">
+      <section id="home" className="min-h-fit bg-gradient-to-b from-green-50 to-green-300 rounded-3xl mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center">
             <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl mb-6 text-custom-green">

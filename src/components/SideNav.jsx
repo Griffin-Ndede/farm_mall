@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaSeedling, FaCalendarAlt, FaHome, FaUser, FaEnvelope } from "react-icons/fa";
+import { FaSeedling, FaCalendarAlt, FaHome, FaUser, FaEnvelope, FaClipboard } from "react-icons/fa";
 import { Menu } from "lucide-react";
 import UserContext from "../Context/UserContext";
 
@@ -12,7 +12,8 @@ function SideNav() {
     const navItems = [
         { icon: FaHome, text: "Dashboard", path: "/dashboard/activities" },
         { icon: FaCalendarAlt, text: "Calendar", path: "/dashboard/calendar" },
-        // { icon: FaUser, text: "User Profile", path: "/dashboard/userprofile" },
+        { icon: FaUser, text: "User Profile", path: "/dashboard/userprofile" },
+        { icon: FaClipboard, text: "Practice page", path: '/dashboard/practice'}
     ];
 
     const handleLogout = (e) => {

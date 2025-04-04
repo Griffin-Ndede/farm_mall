@@ -7,6 +7,7 @@ import { UserProvider } from './Context/UserContext'
 import ActivitiesForm from './Pages/ActivitiesForm'
 import CalendarView from './Pages/Calendar'
 import UserProfile from './Pages/UserProfile'
+import Practice from './Pages/Practice'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
               <Route path="activities" element={<ActivitiesForm />} />
               <Route path="calendar" element={<CalendarView />} />
               <Route path='userprofile' element={<UserProfile/>}/>
+              <Route path='practice' element={<Practice/>}/>
               {/* Default nested route */}
               <Route index element={<ActivitiesForm />} />
             </Route>
