@@ -13,7 +13,7 @@ function SideNav() {
         { icon: FaHome, text: "Dashboard", path: "/dashboard/activities" },
         { icon: FaCalendarAlt, text: "Calendar", path: "/dashboard/calendar" },
         { icon: FaUser, text: "User Profile", path: "/dashboard/userprofile" },
-        { icon: FaClipboard, text: "Practice page", path: '/dashboard/practice'}
+        // { icon: FaClipboard, text: "Practice page", path: '/dashboard/practice'}
     ];
 
     const handleLogout = (e) => {
