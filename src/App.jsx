@@ -22,8 +22,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />}>
               <Route path="activities" element={<ActivitiesForm />} />
               <Route path="calendar" element={<CalendarView />} />
-              <Route path='userprofile' element={<UserProfile/>}/>
-              <Route path='practice' element={<Practice/>}/>
+              <Route path='userprofile' element={<UserProfile />} />
+              <Route path='practice' element={<Practice />} />
               {/* Default nested route */}
               <Route index element={<ActivitiesForm />} />
             </Route>
